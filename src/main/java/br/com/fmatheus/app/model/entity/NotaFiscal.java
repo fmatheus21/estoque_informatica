@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.UUID;
 
 @Builder
 @Getter
@@ -17,9 +18,9 @@ import java.util.Collection;
 public class NotaFiscal implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private UUID id;
 
     @NotBlank
     @Column(name = "numero", length = 20, nullable = false)

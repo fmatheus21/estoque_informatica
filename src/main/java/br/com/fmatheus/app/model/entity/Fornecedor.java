@@ -17,9 +17,9 @@ import java.util.UUID;
 public class Fornecedor implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private UUID id;
 
     @Column(name = "data_alteracao")
     private LocalDateTime dataAlteracao;
