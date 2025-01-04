@@ -7,11 +7,12 @@ import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 public record NotaFiscalRequest(
-        @NotBlank String numero,
+        /*@NotBlank String numero,
         @NotBlank String chaveAcesso,
         @NotBlank String arquivoXml,
-        @Valid @NotNull FornecedorRequest fornecedor) {
+        @Valid @NotNull FornecedorRequest fornecedor*/
+        @NotBlank String arquivoXml) {
 
-    public record FornecedorRequest(@NotNull UUID id) {
-    }
+    /*public record FornecedorRequest(@NotNull UUID id) {
+    }*/
 }

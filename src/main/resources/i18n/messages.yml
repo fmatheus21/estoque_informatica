@@ -1,0 +1,21 @@
+message:
+  error:
+    exist-record: O registro já existe.
+    unauthorized: Não autorizado.
+    not-readable: Existem campos não reconhecidos.
+    internal-server: Houve um erro inesperado. Tente novamente. Caso o problema persista, entre em contato com o administrador.
+    forbidden: Acesso negado!
+    bad-request: Registro não encontrado.
+    not-permission: Você não tem permissão para realizar esta ação.
+    not-found: Registro não encontrado.
+    exist-document: O Documento já está cadastrado.
+    exist-email: O Email já está cadastrado.
+    exist-phone: O Telefone já está cadastrado.
+    record-not-exist: O registro não foi encontrado.
+    data-integrity-violation: O regitro não pôde ser excluído devido a uma Violação de Integridade. Este registro está protegido pelo sistema.
+    user-not-exist: Usuário não encontrado.
+    password-not-match: As senhas não conferem.
+  success:
+    delete: Registro excluído com sucesso.
+    update: Registro atualizado com sucesso.
+    create: Registro criado com sucesso.
