@@ -23,4 +23,8 @@ public class Produto implements Serializable {
     @NotBlank
     @Column(name = "nome", length = 30, nullable = false)
     private String nome;
+
+    @NotBlank
+    @Column(name = "ean", length = 20, nullable = false)
+    private String ean;
 }

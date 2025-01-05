@@ -45,7 +45,7 @@ public class NotaFiscalItem implements Serializable {
     private NotaFiscal notaFiscal;
 
     @ManyToOne
-    @JoinColumn(name = "id_modelo", referencedColumnName = "id", nullable = false)
-    private Modelo modelo;
+    @JoinColumn(name = "id_produto", referencedColumnName = "id", nullable = false)
+    private Produto produto;
 
 }

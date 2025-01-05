@@ -22,6 +22,7 @@ public class NotaFiscalResource {
     private final NotaFiscalFacade facade;
 
 
+    @Transactional
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
     public NotaFiscalResponse create( @RequestPart(name = "file") MultipartFile file, @Valid @RequestPart("json") String json) {
