@@ -4,15 +4,13 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.UUID;
+import java.util.Collection;
 
-public record NotaFiscalRequest(
-        /*@NotBlank String numero,
-        @NotBlank String chaveAcesso,
-        @NotBlank String arquivoXml,
-        @Valid @NotNull FornecedorRequest fornecedor*/
-        @NotBlank String arquivoXml) {
+public record NotaFiscalRequest(@Valid @NotNull Collection<NotaFiscalItemRequest> itens) {
 
-    /*public record FornecedorRequest(@NotNull UUID id) {
-    }*/
+    public record NotaFiscalItemRequest(
+            @NotNull Long idModelo,
+            String observacao,
+            @NotBlank String serialNumber) {
+    }
 }

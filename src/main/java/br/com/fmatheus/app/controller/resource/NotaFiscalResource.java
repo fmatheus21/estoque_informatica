@@ -1,7 +1,6 @@
 package br.com.fmatheus.app.controller.resource;
 
 import br.com.fmatheus.app.controller.dto.filter.NotaFiscalFilter;
-import br.com.fmatheus.app.controller.dto.request.NotaFiscalRequest;
 import br.com.fmatheus.app.controller.dto.response.NotaFiscalResponse;
 import br.com.fmatheus.app.controller.facade.NotaFiscalFacade;
 import jakarta.validation.Valid;
@@ -25,8 +24,8 @@ public class NotaFiscalResource {
 
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
-    public NotaFiscalResponse create( @RequestParam(name = "file") MultipartFile file) {
-        return this.facade.create(file);
+    public NotaFiscalResponse create( @RequestPart(name = "file") MultipartFile file, @Valid @RequestPart("json") String json) {
+        return this.facade.create(file, json);
     }
 
     @Transactional(readOnly = true)
