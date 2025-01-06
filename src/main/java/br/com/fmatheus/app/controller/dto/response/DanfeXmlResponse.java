@@ -325,7 +325,7 @@ public class DanfeXmlResponse {
                     private String cProd;
 
                     @JacksonXmlProperty(localName = "cEAN")
-                    private String cEAN;
+                    private String cEan;
 
                     @JacksonXmlProperty(localName = "xProd")
                     private String xProd;
@@ -352,7 +352,7 @@ public class DanfeXmlResponse {
                     private String vProd;
 
                     @JacksonXmlProperty(localName = "cEANTrib")
-                    private String cEANTrib;
+                    private String cEanTrib;
 
                     @JacksonXmlProperty(localName = "uTrib")
                     private String uTrib;

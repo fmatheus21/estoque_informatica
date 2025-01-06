@@ -5,11 +5,13 @@ import br.com.fmatheus.app.controller.dto.filter.NotaFiscalFilter;
 import br.com.fmatheus.app.controller.dto.request.NotaFiscalRequest;
 import br.com.fmatheus.app.controller.dto.response.DanfeXmlResponse;
 import br.com.fmatheus.app.controller.dto.response.NotaFiscalResponse;
+import br.com.fmatheus.app.controller.util.CharacterUtil;
 import br.com.fmatheus.app.controller.util.ConverterUtil;
 import br.com.fmatheus.app.model.entity.*;
 import br.com.fmatheus.app.model.service.FornecedorService;
 import br.com.fmatheus.app.model.service.NotaFiscalService;
 import br.com.fmatheus.app.model.service.PessoaService;
+import br.com.fmatheus.app.model.service.ProdutoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.UUID;
 
 import static br.com.fmatheus.app.controller.util.CharacterUtil.*;
@@ -35,39 +39,44 @@ public class NotaFiscalFacade {
     private final NotaFiscalConverter notaFiscalConverter;
     private final FornecedorService fornecedorService;
     private final PessoaService pessoaService;
+    private final ProdutoService produtoService;
 
 
     public NotaFiscalResponse create(MultipartFile file, String json) {
-        NotaFiscalRequest request = null;
-        try {
-            request = this.converterUtil.convertJsonToObject(json, NotaFiscalRequest.class);
-            log.info("request: {}", request);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        NotaFiscalRequest request = this.convertJsonToObject(json);
+        DanfeXmlResponse response = this.convertXmlToObject(file);
+        String xml = this.convertXmlToString(file);
 
-        DanfeXmlResponse response = null;
 
-        try {
-            response = this.converterUtil.convertXmlToObject(file.getInputStream(), DanfeXmlResponse.class);
-            log.info("response: {}", response);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        var fornecedor = this.cadastrarFornecedor(response);
+        this.cadastrarProdutos(response);
 
-        try {
-            String xmlContent = this.converterUtil.convertXmlToString(file.getInputStream());
-            log.info("xmlContent: {}", xmlContent);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        var notaFiscal = NotaFiscal.builder()
+                .fornecedor(fornecedor.getFornecedor())
+                .numero(response.getNFe().getInfNFe().getIde().getCNF())
+                .chaveAcesso(response.getProtNFe().getInfProt().getChNFe())
+                .arquivoXml(xml)
+                .build();
 
-        this.test(request, response);
+        Collection<NotaFiscalItem> itens = new ArrayList<>();
+
+        request.itens().forEach(item -> itens.add(NotaFiscalItem.builder()
+                .notaFiscal(notaFiscal)
+                .produto(null)
+                .serialNumber(item.serialNumber())
+                .observacao(item.observacao())
+                .idUsuarioCriacao(UUID.randomUUID())
+                .dataCriacao(LocalDateTime.now())
+                .build()));
+
+        notaFiscal.setNotaFiscalItems(itens);
+
+        // this.notaFiscalService.save(notaFiscal);
 
         return null;
 
     }
+
 
     public Page<NotaFiscalResponse> findAllFilter(Pageable pageable, NotaFiscalFilter filter) {
         var list = this.notaFiscalService.findAllFilter(pageable, filter);
@@ -75,19 +84,33 @@ public class NotaFiscalFacade {
         return new PageImpl<>(listConverter, pageable, this.notaFiscalService.total(filter));
     }
 
-    private void test(NotaFiscalRequest request, DanfeXmlResponse response) {
-
-        var cnpj = response.getNFe().getInfNFe().getEmit().getCnpj();
-        var fornecedor = this.cadastrarFornecedor(response);
-
-        var notaFiscal = NotaFiscal.builder()
-                .fornecedor(fornecedor.getFornecedor())
-                .numero(response.getNFe().getInfNFe().getIde().getCNF())
-                .chaveAcesso(response.getProtNFe().getInfProt().getChNFe())
-                .build();
-
-
+    private NotaFiscalRequest convertJsonToObject(String json) {
+        try {
+            log.info("Convertendo o json recebido na requisicao");
+            return this.converterUtil.convertJsonToObject(json, NotaFiscalRequest.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    private DanfeXmlResponse convertXmlToObject(MultipartFile file) {
+        try {
+            log.info("Convertendo o arquivo XML para objeto");
+            return this.converterUtil.convertXmlToObject(file.getInputStream(), DanfeXmlResponse.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String convertXmlToString(MultipartFile file) {
+        try {
+            log.info("Convertendo o arquivo XML para String");
+            return this.converterUtil.convertXmlToString(file.getInputStream());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     private Pessoa cadastrarFornecedor(DanfeXmlResponse response) {
 
@@ -125,6 +148,27 @@ public class NotaFiscalFacade {
         pessoa.setContato(contato);
 
         return this.pessoaService.save(pessoa);
+    }
+
+
+    private void cadastrarProdutos(DanfeXmlResponse response) {
+
+        response.getNFe().getInfNFe().getDet().forEach(prod -> {
+            DanfeXmlResponse.NFe.InfNFe.Det.Prod prodXml = prod.getProd();
+            String ean = prodXml.getCEan();
+
+            var consulta = this.produtoService.findByEan(ean);
+            if (consulta.isEmpty()) {
+                log.info("Salvando o produto [{}]", prodXml.getXProd());
+                var produto = Produto.builder()
+                        .nome(CharacterUtil.removeDuplicateSpace(prodXml.getXProd()))
+                        .ean(ean)
+                        .build();
+                this.produtoService.save(produto);
+            }
+        });
+
+
     }
 
 

@@ -32,7 +32,7 @@ public class NotaFiscalItem implements Serializable {
     @Column(name = "observacao", nullable = false, columnDefinition = "MEDIUMTEXT")
     private String observacao;
 
-    @NotBlank
+    @NotNull
     @Column(name = "id_usuario_criacao", nullable = false)
     private UUID idUsuarioCriacao;
 

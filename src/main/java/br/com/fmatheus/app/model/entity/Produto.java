@@ -21,7 +21,7 @@ public class Produto implements Serializable {
     private Long id;
 
     @NotBlank
-    @Column(name = "nome", length = 30, nullable = false)
+    @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
     @NotBlank

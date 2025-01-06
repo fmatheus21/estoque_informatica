@@ -1,6 +1,6 @@
 CREATE TABLE produto (
   id int NOT NULL AUTO_INCREMENT,
-  nome varchar(30) NOT NULL,
+  nome varchar(200) NOT NULL,
   ean varchar(20) NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY id_UNIQUE (id),

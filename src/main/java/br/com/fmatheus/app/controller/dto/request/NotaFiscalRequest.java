@@ -9,7 +9,6 @@ import java.util.Collection;
 public record NotaFiscalRequest(@Valid @NotNull Collection<NotaFiscalItemRequest> itens) {
 
     public record NotaFiscalItemRequest(
-            @NotNull Long idModelo,
             String observacao,
             @NotBlank String serialNumber) {
     }
