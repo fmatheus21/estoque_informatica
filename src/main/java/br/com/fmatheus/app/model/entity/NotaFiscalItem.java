@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
 @Builder
 @Getter
 @Setter
@@ -27,7 +28,6 @@ public class NotaFiscalItem implements Serializable {
     @Column(name = "serial_number", length = 40, nullable = false)
     private String serialNumber;
 
-    @NotBlank
     @Lob
     @Column(name = "observacao", nullable = false, columnDefinition = "MEDIUMTEXT")
     private String observacao;

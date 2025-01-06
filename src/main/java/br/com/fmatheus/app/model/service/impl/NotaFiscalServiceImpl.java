@@ -44,7 +44,7 @@ public class NotaFiscalServiceImpl implements NotaFiscalService {
     }
 
     @Override
-    public NotaFiscal findByChaveAcesso(String chaveAcesso) {
+    public Optional<NotaFiscal> findByChaveAcesso(String chaveAcesso) {
         return this.repository.findByChaveAcesso(removeAllSpaces(chaveAcesso));
     }
 
@@ -61,6 +61,11 @@ public class NotaFiscalServiceImpl implements NotaFiscalService {
     @Override
     public Long total(NotaFiscalFilter filter) {
         return this.repository.total(filter);
+    }
+
+    @Override
+    public Optional<NotaFiscal> findBySerialNumber(String serialNumber) {
+        return this.repository.findByNotaFiscalItems_SerialNumber(serialNumber);
     }
 
 }

@@ -45,8 +45,10 @@ public class NotaFiscalFacade {
     public NotaFiscalResponse create(MultipartFile file, String json) {
         NotaFiscalRequest request = this.convertJsonToObject(json);
         DanfeXmlResponse response = this.convertXmlToObject(file);
-        String xml = this.convertXmlToString(file);
 
+        this.validaDadosNotaFiscal(request, response);
+
+        String xml = this.convertXmlToString(file);
 
         var fornecedor = this.cadastrarFornecedor(response);
         this.cadastrarProdutos(response);
@@ -58,20 +60,28 @@ public class NotaFiscalFacade {
                 .arquivoXml(xml)
                 .build();
 
-        Collection<NotaFiscalItem> itens = new ArrayList<>();
+        Collection<String> lisEan = new ArrayList<>();
+        response.getNFe().getInfNFe().getDet().forEach(prod -> lisEan.add(prod.getProd().getCEan()));
 
-        request.itens().forEach(item -> itens.add(NotaFiscalItem.builder()
-                .notaFiscal(notaFiscal)
-                .produto(null)
-                .serialNumber(item.serialNumber())
-                .observacao(item.observacao())
-                .idUsuarioCriacao(UUID.randomUUID())
-                .dataCriacao(LocalDateTime.now())
-                .build()));
+        Collection<NotaFiscalItem> itens = new ArrayList<>();
+        request.itens().forEach(item -> {
+
+            var ean = lisEan.stream().filter(f -> f.equalsIgnoreCase(item.ean())).findFirst().orElseThrow(RuntimeException::new);
+            var produto = this.produtoService.findByEan(ean).orElseThrow(RuntimeException::new);
+
+            itens.add(NotaFiscalItem.builder()
+                    .notaFiscal(notaFiscal)
+                    .produto(produto)
+                    .serialNumber(item.serialNumber())
+                    .observacao(item.observacao())
+                    .idUsuarioCriacao(UUID.randomUUID())
+                    .dataCriacao(LocalDateTime.now())
+                    .build());
+        });
 
         notaFiscal.setNotaFiscalItems(itens);
 
-        // this.notaFiscalService.save(notaFiscal);
+        this.notaFiscalService.save(notaFiscal);
 
         return null;
 
@@ -114,18 +124,19 @@ public class NotaFiscalFacade {
 
     private Pessoa cadastrarFornecedor(DanfeXmlResponse response) {
 
-        var fornecedorConsulta = this.fornecedorService.findByDocument(response.getNFe().getInfNFe().getEmit().getCnpj());
+        DanfeXmlResponse.NFe.InfNFe.Emit emit = response.getNFe().getInfNFe().getEmit();
+        var cnpj = removeSpecialCharacters(emit.getCnpj());
+        log.info("Consultando o fornecedor com o CNPJ {}.", cnpj);
+
+        var fornecedorConsulta = this.fornecedorService.findByDocument(cnpj);
 
         if (fornecedorConsulta.isPresent()) {
-            log.info("O fornecedor {} ja existe e nao precisara ser cadastrado.", fornecedorConsulta.get().getPessoa().getNome());
             return fornecedorConsulta.get().getPessoa();
         }
 
-        DanfeXmlResponse.NFe.InfNFe.Emit emit = response.getNFe().getInfNFe().getEmit();
-        var cnpj = removeSpecialCharacters(emit.getCnpj());
         var razaoSocial = removeDuplicateSpace(convertAllUppercaseCharacters(emit.getXNome()));
         var telefone = emit.getEnderEmit().getFone();
-
+        log.info("O fornecedor {} sera cadastrado.", razaoSocial);
 
         var pessoa = Pessoa.builder()
                 .pessoaTipo(PessoaTipo.builder().id(2L).build())
@@ -168,6 +179,21 @@ public class NotaFiscalFacade {
             }
         });
 
+
+    }
+
+    private void validaDadosNotaFiscal(NotaFiscalRequest request, DanfeXmlResponse response) {
+        request.itens().forEach(item -> {
+            var consultaSerialNumber = this.notaFiscalService.findBySerialNumber(item.serialNumber());
+            if (consultaSerialNumber.isPresent()) {
+                throw new RuntimeException(String.format("O SerialNumber %s já está cadastrado.", item.serialNumber()));
+            }
+        });
+
+        var consultaChaveAcesso = this.notaFiscalService.findByChaveAcesso(response.getProtNFe().getInfProt().getChNFe());
+        if (consultaChaveAcesso.isPresent()) {
+            throw new RuntimeException(String.format("A Chave de Acesso %s já está cadastrada.", consultaChaveAcesso.get().getChaveAcesso()));
+        }
 
     }
 
