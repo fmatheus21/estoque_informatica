@@ -1,8 +1,8 @@
 package br.com.fmatheus.app.controller.resource;
 
-import br.com.fmatheus.app.controller.dto.filter.NotaFiscalFilter;
-import br.com.fmatheus.app.controller.dto.response.NotaFiscalResponse;
-import br.com.fmatheus.app.controller.facade.NotaFiscalFacade;
+import br.com.fmatheus.app.controller.dto.filter.InvoiceFilter;
+import br.com.fmatheus.app.controller.dto.response.InvoiceResponse;
+import br.com.fmatheus.app.controller.facade.InvoiceFacade;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,19 +19,19 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/notas-fiscais")
 public class NotaFiscalResource {
 
-    private final NotaFiscalFacade facade;
+    private final InvoiceFacade facade;
 
 
     @Transactional
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
-    public NotaFiscalResponse create( @RequestPart(name = "file") MultipartFile file, @Valid @RequestPart("json") String json) {
+    public InvoiceResponse create(@RequestPart(name = "file") MultipartFile file, @Valid @RequestPart("json") String json) {
         return this.facade.create(file, json);
     }
 
     @Transactional(readOnly = true)
     @GetMapping
-    public ResponseEntity<Page<NotaFiscalResponse>> findAllFilter(Pageable pageable, NotaFiscalFilter filter) {
+    public ResponseEntity<Page<InvoiceResponse>> findAllFilter(Pageable pageable, InvoiceFilter filter) {
         var result = this.facade.findAllFilter(pageable, filter);
         return !result.isEmpty() ? ResponseEntity.ok(result) : ResponseEntity.noContent().build();
     }

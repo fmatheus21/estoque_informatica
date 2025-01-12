@@ -18,7 +18,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: ${SPRING_DATASOURCE_PASSWORD}
-    url: jdbc:mysql://localhost:3306/estoque_informatica?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/it_asset_control?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
     username: ${SPRING_DATASOURCE_USERNAME}
   jackson:
     default-property-inclusion: non_null
@@ -26,7 +26,7 @@ spring:
       fail_on_empty_beans: false
   flyway:
     password: ${SPRING_DATASOURCE_PASSWORD}
-    url: jdbc:mysql://localhost:3306/estoque_informatica?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/it_asset_control?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
     user: ${SPRING_DATASOURCE_USERNAME}
     baseline-on-migrate: true
   jpa:

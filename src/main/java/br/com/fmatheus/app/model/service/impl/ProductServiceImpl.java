@@ -1,0 +1,44 @@
+package br.com.fmatheus.app.model.service.impl;
+
+import br.com.fmatheus.app.controller.util.CharacterUtil;
+import br.com.fmatheus.app.model.entity.Product;
+import br.com.fmatheus.app.model.repository.ProductRepository;
+import br.com.fmatheus.app.model.service.ProductService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@RequiredArgsConstructor
+@Service
+public class ProductServiceImpl implements ProductService {
+
+    private final ProductRepository repository;
+
+    @Override
+    public Optional<Product> findByEan(String ean) {
+        return this.repository.findByEan(CharacterUtil.removeAllSpaces(ean));
+    }
+
+    @Override
+    public List<Product> findAll() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Optional<Product> findById(Long id) {
+        return this.repository.findById(id);
+    }
+
+    @Override
+    public Product save(Product product) {
+        return this.repository.save(product);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        this.repository.deleteById(id);
+    }
+
+}
