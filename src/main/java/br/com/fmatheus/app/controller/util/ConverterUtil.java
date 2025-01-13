@@ -6,9 +6,11 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 @RequiredArgsConstructor
 @Component
@@ -42,11 +44,13 @@ public class ConverterUtil {
     /**
      * Le o conteudo do InputStream e converte em uma String formatada.
      *
-     * @param inputStream O arquivo recebido como InputStream
+     * @param file O arquivo recebido como InputStream
      * @return String contendo o conteudo do arquivo formatado
      */
-    public String convertXmlToString(InputStream inputStream) throws IOException {
-        return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+    public String convertXmlToString(File file) throws IOException {
+        // return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        byte[] fileBytes = Files.readAllBytes(file.toPath());
+        return new String(fileBytes, StandardCharsets.UTF_8);
     }
 
 }

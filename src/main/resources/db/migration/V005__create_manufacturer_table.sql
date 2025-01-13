@@ -18,5 +18,6 @@ INSERT INTO manufacturer (id, name) VALUES
 (9, 'RISE'),
 (10, 'CORSAIR'),
 (11, 'KINGSTON'),
-(12, 'NVIDIA');
+(12, 'NVIDIA'),
+(13, 'SAMSUNG');
 

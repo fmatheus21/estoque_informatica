@@ -35,3 +35,10 @@ spring:
 logging:
   pattern:
     level: '%5p [${spring.properties.name:},%X{traceId:-},%X{spanId:-}]'
+custom:
+  upload:
+    path-root: user.dir
+    files:
+      danfe:
+        path: /files/danfe
+        extension: .xml

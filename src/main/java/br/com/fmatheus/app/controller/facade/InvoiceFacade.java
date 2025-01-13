@@ -1,17 +1,18 @@
 package br.com.fmatheus.app.controller.facade;
 
+import br.com.fmatheus.app.config.properties.CustomProperties;
 import br.com.fmatheus.app.controller.converter.InvoiceConverter;
 import br.com.fmatheus.app.controller.dto.filter.InvoiceFilter;
 import br.com.fmatheus.app.controller.dto.request.InvoiceRequest;
 import br.com.fmatheus.app.controller.dto.response.DanfeXmlResponse;
 import br.com.fmatheus.app.controller.dto.response.InvoiceResponse;
-import br.com.fmatheus.app.controller.util.CharacterUtil;
 import br.com.fmatheus.app.controller.util.ConverterUtil;
+import br.com.fmatheus.app.controller.util.FileUtil;
 import br.com.fmatheus.app.model.entity.*;
-import br.com.fmatheus.app.model.service.SupplierService;
 import br.com.fmatheus.app.model.service.InvoiceService;
 import br.com.fmatheus.app.model.service.PersonService;
 import br.com.fmatheus.app.model.service.ProductService;
+import br.com.fmatheus.app.model.service.SupplierService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -34,25 +36,28 @@ import static br.com.fmatheus.app.controller.util.CharacterUtil.*;
 @Component
 public class InvoiceFacade {
 
+
     private final ConverterUtil converterUtil;
     private final InvoiceService invoiceService;
     private final InvoiceConverter invoiceConverter;
     private final SupplierService supplierService;
     private final PersonService personService;
     private final ProductService productService;
+    private final CustomProperties properties;
 
 
-    public InvoiceResponse create(MultipartFile file, String json) {
-        InvoiceRequest request = this.convertJsonToObject(json);
-        DanfeXmlResponse response = this.convertXmlToObject(file);
+    public InvoiceResponse create(MultipartFile multipartFile, String json) {
 
+        var response = this.convertXmlToObject(multipartFile);
+        var file = this.saveFile(multipartFile, response);
+
+        var request = this.convertJsonToObject(json);
         this.validatesInvoiceData(request, response);
 
-        String xml = this.convertXmlToString(file);
-
+        var xml = this.convertXmlToString(file);
         var supplier = this.registerSupplier(response);
-        this.registerProducts(response);
 
+        //this.registerProducts(response);
         var invoice = Invoice.builder()
                 .supplier(supplier.getSupplier())
                 .number(response.getNFe().getInfNFe().getIde().getCNF())
@@ -60,28 +65,41 @@ public class InvoiceFacade {
                 .xmlFile(xml)
                 .build();
 
-        Collection<String> listEan = new ArrayList<>();
-        response.getNFe().getInfNFe().getDet().forEach(prod -> listEan.add(prod.getProd().getCEan()));
+        // Collection<String> listEan = new ArrayList<>();
+        //response.getNFe().getInfNFe().getDet().forEach(prod -> listEan.add(prod.getProd().getCEan()));
 
         Collection<InvoiceItem> items = new ArrayList<>();
-        request.items().forEach(item -> {
+
+        request.products().forEach(prod -> prod.items().forEach(it -> items.add(InvoiceItem.builder()
+                .invoice(invoice)
+                .serialNumber(it.serialNumber())
+                .observation(it.observation())
+                .idUserCreated(UUID.randomUUID())
+                .dateCreated(LocalDateTime.now())
+                .product(Product.builder()
+                        .id(prod.idProduct())
+                        .build())
+                .build())));
+
+        invoice.setInvoiceItems(items);
+
+        this.invoiceService.save(invoice);
+
+        /*request.items().forEach(item -> {
 
             var ean = listEan.stream().filter(f -> f.equalsIgnoreCase(item.ean())).findFirst().orElseThrow(RuntimeException::new);
-            var produto = this.productService.findByEan(ean).orElseThrow(RuntimeException::new);
+            var product = this.productService.findByEan(ean).orElseThrow(RuntimeException::new);
 
             items.add(InvoiceItem.builder()
                     .invoice(invoice)
-                    .product(produto)
+                    .product(product)
                     .serialNumber(item.serialNumber())
                     .observation(item.observation())
                     .idUserCreated(UUID.randomUUID())
                     .dateCreated(LocalDateTime.now())
                     .build());
-        });
+        });*/
 
-        invoice.setInvoiceItems(items);
-
-        this.invoiceService.save(invoice);
 
         return null;
 
@@ -112,10 +130,10 @@ public class InvoiceFacade {
         }
     }
 
-    private String convertXmlToString(MultipartFile file) {
+    private String convertXmlToString(File file) {
         try {
             log.info("Convertendo o arquivo XML para String");
-            return this.converterUtil.convertXmlToString(file.getInputStream());
+            return this.converterUtil.convertXmlToString(file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -152,7 +170,7 @@ public class InvoiceFacade {
 
         var contact = Contact.builder()
                 .person(person)
-                .phone(removeSpecialCharacters(telefone))
+                .phone(telefone != null ? removeSpecialCharacters(telefone) : null)
                 .build();
 
         person.setSupplier(supplier);
@@ -162,7 +180,7 @@ public class InvoiceFacade {
     }
 
 
-    private void registerProducts(DanfeXmlResponse response) {
+    /*private void registerProducts(DanfeXmlResponse response) {
         response.getNFe().getInfNFe().getDet().forEach(prod -> {
             DanfeXmlResponse.NFe.InfNFe.Det.Prod prodXml = prod.getProd();
             String ean = prodXml.getCEan();
@@ -177,22 +195,37 @@ public class InvoiceFacade {
                 this.productService.save(product);
             }
         });
-    }
+    }*/
 
     private void validatesInvoiceData(InvoiceRequest request, DanfeXmlResponse response) {
-        request.items().forEach(item -> {
-            var serialNumberQuery = this.invoiceService.findBySerialNumber(item.serialNumber());
+        request.products().forEach(prod -> prod.items().forEach(it -> {
+            var serialNumberQuery = this.invoiceService.findBySerialNumber(it.serialNumber());
             if (serialNumberQuery.isPresent()) {
-                throw new RuntimeException(String.format("O SerialNumber %s já está cadastrado.", item.serialNumber()));
+                throw new RuntimeException(String.format("O SerialNumber %s já está cadastrado.", it.serialNumber()));
             }
-        });
+        }));
 
         var accessKeyQuery = this.invoiceService.findByAccessKey(response.getProtNFe().getInfProt().getChNFe());
         if (accessKeyQuery.isPresent()) {
             throw new RuntimeException(String.format("A Chave de Acesso %s já está cadastrada.", accessKeyQuery.get().getAccessKey()));
         }
-
     }
 
+    /**
+     * Salva o arquivo recebido na requisicao.
+     *
+     * @param file     Arquivo a ser salvo.
+     * @param response Arquivo XML convertido em objeto.
+     */
+    private File saveFile(MultipartFile file, DanfeXmlResponse response) {
+        var pathRoot = System.getProperty(this.properties.getUpload().getPathRoot());
+        var pathFile = pathRoot.concat(File.separator).concat(this.properties.getUpload().getFiles().getDanfe().getPath());
+
+        try {
+            return FileUtil.saveFile(file, pathFile, response.getProtNFe().getInfProt().getChNFe());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

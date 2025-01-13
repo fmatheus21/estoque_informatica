@@ -1,7 +1,6 @@
 package br.com.fmatheus.app.model.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.io.Serializable;
@@ -20,8 +19,7 @@ public class Contact implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotBlank
-    @Column(name = "phone", length = 20, nullable = false)
+    @Column(name = "phone", length = 20)
     private String phone;
 
     @OneToOne

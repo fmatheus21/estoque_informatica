@@ -1,7 +1,7 @@
 CREATE TABLE contact (
   id int NOT NULL AUTO_INCREMENT,
   id_person int NOT NULL,
-  phone varchar(20) NOT NULL,
+  phone varchar(20),
   PRIMARY KEY (id),
   UNIQUE KEY id_UNIQUE (id),
   UNIQUE KEY id_person_UNIQUE (id_person),

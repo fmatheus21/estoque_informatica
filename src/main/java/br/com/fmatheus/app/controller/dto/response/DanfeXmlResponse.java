@@ -168,6 +168,7 @@ public class DanfeXmlResponse {
                 @JacksonXmlProperty(localName = "xFant")
                 private String xFant;
 
+                @JacksonXmlProperty(localName = "enderEmit")
                 private EnderEmit enderEmit;
 
                 @JacksonXmlProperty(localName = "IE")

@@ -10,3 +10,5 @@ CREATE TABLE product (
   KEY fk_manufacturer_product (id_manufacturer),
   CONSTRAINT fk_manufacturer_product FOREIGN KEY (id_manufacturer) REFERENCES manufacturer (id) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO product (id, id_manufacturer, name, ean) VALUES (1, 13, 'MONITOR LED 27 FULL HD CURVO LC27F390 FREE SYNC', '7892509095143');

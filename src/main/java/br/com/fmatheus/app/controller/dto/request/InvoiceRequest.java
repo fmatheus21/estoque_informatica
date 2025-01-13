@@ -6,11 +6,19 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Collection;
 
-public record InvoiceRequest(@Valid @NotNull Collection<InvoiceItemRequest> items) {
+public record InvoiceRequest(
+        @Valid @NotNull Collection<ProductRequest> products) {
 
-    public record InvoiceItemRequest(
+    public record ProductRequest(
+            @NotBlank Long idProduct,
             @NotBlank String ean,
-            @NotBlank String serialNumber,
-            String observation) {
+            @Valid Collection<InvoiceItemRequest> items) {
+
+        public record InvoiceItemRequest(
+                @NotBlank String serialNumber,
+                String observation) {
+        }
+
     }
+
 }
