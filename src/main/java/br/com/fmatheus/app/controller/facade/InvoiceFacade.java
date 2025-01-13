@@ -11,7 +11,6 @@ import br.com.fmatheus.app.controller.util.FileUtil;
 import br.com.fmatheus.app.model.entity.*;
 import br.com.fmatheus.app.model.service.InvoiceService;
 import br.com.fmatheus.app.model.service.PersonService;
-import br.com.fmatheus.app.model.service.ProductService;
 import br.com.fmatheus.app.model.service.SupplierService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
@@ -42,8 +41,8 @@ public class InvoiceFacade {
     private final InvoiceConverter invoiceConverter;
     private final SupplierService supplierService;
     private final PersonService personService;
-    private final ProductService productService;
     private final CustomProperties properties;
+    private final MessageFacade messageFacade;
 
 
     public InvoiceResponse create(MultipartFile multipartFile, String json) {
@@ -57,16 +56,12 @@ public class InvoiceFacade {
         var xml = this.convertXmlToString(file);
         var supplier = this.registerSupplier(response);
 
-        //this.registerProducts(response);
         var invoice = Invoice.builder()
                 .supplier(supplier.getSupplier())
                 .number(response.getNFe().getInfNFe().getIde().getCNF())
                 .accessKey(response.getProtNFe().getInfProt().getChNFe())
                 .xmlFile(xml)
                 .build();
-
-        // Collection<String> listEan = new ArrayList<>();
-        //response.getNFe().getInfNFe().getDet().forEach(prod -> listEan.add(prod.getProd().getCEan()));
 
         Collection<InvoiceItem> items = new ArrayList<>();
 
@@ -85,22 +80,6 @@ public class InvoiceFacade {
 
         this.invoiceService.save(invoice);
 
-        /*request.items().forEach(item -> {
-
-            var ean = listEan.stream().filter(f -> f.equalsIgnoreCase(item.ean())).findFirst().orElseThrow(RuntimeException::new);
-            var product = this.productService.findByEan(ean).orElseThrow(RuntimeException::new);
-
-            items.add(InvoiceItem.builder()
-                    .invoice(invoice)
-                    .product(product)
-                    .serialNumber(item.serialNumber())
-                    .observation(item.observation())
-                    .idUserCreated(UUID.randomUUID())
-                    .dateCreated(LocalDateTime.now())
-                    .build());
-        });*/
-
-
         return null;
 
     }
@@ -117,7 +96,8 @@ public class InvoiceFacade {
             log.info("Convertendo o json recebido na requisicao");
             return this.converterUtil.convertJsonToObject(json, InvoiceRequest.class);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            log.error(e.getMessage());
+            throw this.messageFacade.errorJsonConverter();
         }
     }
 
@@ -126,7 +106,8 @@ public class InvoiceFacade {
             log.info("Convertendo o arquivo XML para objeto");
             return this.converterUtil.convertXmlToObject(file.getInputStream(), DanfeXmlResponse.class);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.error(e.getMessage());
+            throw this.messageFacade.errorXmlConverter();
         }
     }
 
@@ -135,7 +116,8 @@ public class InvoiceFacade {
             log.info("Convertendo o arquivo XML para String");
             return this.converterUtil.convertXmlToString(file);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.error(e.getMessage());
+            throw this.messageFacade.errorXmlConverter();
         }
     }
 
@@ -198,17 +180,18 @@ public class InvoiceFacade {
     }*/
 
     private void validatesInvoiceData(InvoiceRequest request, DanfeXmlResponse response) {
-        request.products().forEach(prod -> prod.items().forEach(it -> {
-            var serialNumberQuery = this.invoiceService.findBySerialNumber(it.serialNumber());
-            if (serialNumberQuery.isPresent()) {
-                throw new RuntimeException(String.format("O SerialNumber %s já está cadastrado.", it.serialNumber()));
-            }
-        }));
 
         var accessKeyQuery = this.invoiceService.findByAccessKey(response.getProtNFe().getInfProt().getChNFe());
         if (accessKeyQuery.isPresent()) {
-            throw new RuntimeException(String.format("A Chave de Acesso %s já está cadastrada.", accessKeyQuery.get().getAccessKey()));
+            throw this.messageFacade.errorAccessKeyAlready();
         }
+
+        request.products().forEach(prod -> prod.items().forEach(it -> {
+            var serialNumberQuery = this.invoiceService.findBySerialNumber(it.serialNumber());
+            if (serialNumberQuery.isPresent()) {
+                throw this.messageFacade.errorSerialNumberAlready(it.serialNumber());
+            }
+        }));
     }
 
     /**
@@ -224,7 +207,8 @@ public class InvoiceFacade {
         try {
             return FileUtil.saveFile(file, pathFile, response.getProtNFe().getInfProt().getChNFe());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.error(e.getMessage());
+            throw this.messageFacade.errorFileStorage();
         }
     }
 

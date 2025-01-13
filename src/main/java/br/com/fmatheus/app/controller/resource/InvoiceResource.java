@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/notas-fiscais")
+@RequestMapping("/invoices")
 public class InvoiceResource {
 
     private final InvoiceFacade facade;

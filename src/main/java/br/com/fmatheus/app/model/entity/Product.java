@@ -27,4 +27,8 @@ public class Product implements Serializable {
     @NotBlank
     @Column(name = "ean", length = 20, nullable = false)
     private String ean;
+
+    @ManyToOne
+    @JoinColumn(name = "id_manufacturer", referencedColumnName = "id", nullable = false)
+    private Manufacturer manufacturer;
 }
