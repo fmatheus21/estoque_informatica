@@ -21,9 +21,11 @@ public abstract class ProductHelper {
 
     /**
      * Processa alteracoes nos valores dos atributos antes de retornar a resposta.
+     * Exemplo: Converter os caracteres em minusculos.
      *
      * @param product Entidade
      * @return {@link Product}
+     * @author <a href="mailto:fernando.matheuss@hotmail.com">Fernando Matheus</a>
      */
     protected Product output(Product product) {
         product.setName(convertFirstUppercaseCharacter(product.getName()));

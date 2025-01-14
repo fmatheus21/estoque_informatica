@@ -19,7 +19,8 @@ public class ProductServiceImpl extends ProductHelper implements ProductService 
 
     @Override
     public Optional<Product> findByEan(String ean) {
-        return this.repository.findByEan(CharacterUtil.removeAllSpaces(ean));
+        var query = this.repository.findByEan(CharacterUtil.removeAllSpaces(ean));
+        return query.map(this::output);
     }
 
     @Override
@@ -29,7 +30,8 @@ public class ProductServiceImpl extends ProductHelper implements ProductService 
 
     @Override
     public Optional<Product> findById(Long id) {
-        return this.repository.findById(id);
+        var query = this.repository.findById(id);
+        return query.map(this::output);
     }
 
     @Override
