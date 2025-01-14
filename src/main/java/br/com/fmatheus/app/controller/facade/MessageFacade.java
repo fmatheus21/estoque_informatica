@@ -1,9 +1,6 @@
 package br.com.fmatheus.app.controller.facade;
 
-import br.com.fmatheus.app.controller.exception.BadRequestException;
-import br.com.fmatheus.app.controller.exception.FileStorageException;
-import br.com.fmatheus.app.controller.exception.JsonConverterException;
-import br.com.fmatheus.app.controller.exception.XmlConverterException;
+import br.com.fmatheus.app.controller.exception.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
@@ -56,5 +53,9 @@ public class MessageFacade {
 
     public BadRequestException errorEanAlready(String ean) {
         return new BadRequestException(String.format("O EAN %s já está cadastrado.", ean));
+    }
+
+    public NotFoundException errorNotFoundException() {
+        return new NotFoundException(RECORD_NOT_EXIST);
     }
 }

@@ -27,4 +27,9 @@ public class ProductFacade {
         return this.productConverter.converterToResponse(commit);
     }
 
+    public ProductResponse findById(Long id) {
+        var query = this.productService.findById(id).orElseThrow(this.messageFacade::errorNotFoundException);
+        return this.productConverter.converterToResponse(query);
+    }
+
 }

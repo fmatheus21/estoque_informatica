@@ -21,4 +21,10 @@ public class ProductResource {
         return this.facade.create(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{id}")
+    public ProductResponse findById(@PathVariable Long id) {
+        return this.facade.findById(id);
+    }
+
 }
