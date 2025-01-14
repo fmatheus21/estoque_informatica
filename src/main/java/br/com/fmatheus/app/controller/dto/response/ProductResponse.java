@@ -3,9 +3,9 @@ package br.com.fmatheus.app.controller.dto.response;
 public record ProductResponse(
         String name,
         String ean,
-        ManufacturerRequest idManufacturer) {
+        ManufacturerResponse manufacturer) {
 
-    public record ManufacturerRequest(
+    public record ManufacturerResponse(
             Long id,
             String name) {
     }

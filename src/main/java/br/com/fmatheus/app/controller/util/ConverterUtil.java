@@ -48,7 +48,6 @@ public class ConverterUtil {
      * @return String contendo o conteudo do arquivo formatado
      */
     public String convertXmlToString(File file) throws IOException {
-        // return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
         byte[] fileBytes = Files.readAllBytes(file.toPath());
         return new String(fileBytes, StandardCharsets.UTF_8);
     }

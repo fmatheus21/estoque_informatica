@@ -53,4 +53,8 @@ public class MessageFacade {
     public BadRequestException errorSerialNumberAlready(String serialNumber) {
         return new BadRequestException(String.format("O Número de Série %s já está cadastrado.", serialNumber));
     }
+
+    public BadRequestException errorEanAlready(String ean) {
+        return new BadRequestException(String.format("O EAN %s já está cadastrado.", ean));
+    }
 }

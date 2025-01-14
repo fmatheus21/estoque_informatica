@@ -1,5 +1,6 @@
 package br.com.fmatheus.app.model.service.impl;
 
+import br.com.fmatheus.app.controller.converter.helper.ProductHelper;
 import br.com.fmatheus.app.controller.util.CharacterUtil;
 import br.com.fmatheus.app.model.entity.Product;
 import br.com.fmatheus.app.model.repository.ProductRepository;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl extends ProductHelper implements ProductService {
 
     private final ProductRepository repository;
 
@@ -33,12 +34,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product save(Product product) {
-        return this.repository.save(product);
+        var input = input(product);
+        return output(this.repository.save(input));
     }
 
     @Override
     public void deleteById(Long id) {
         this.repository.deleteById(id);
     }
+
 
 }
