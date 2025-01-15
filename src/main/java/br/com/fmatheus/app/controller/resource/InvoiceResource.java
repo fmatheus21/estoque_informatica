@@ -32,8 +32,8 @@ public class InvoiceResource {
     @Transactional(readOnly = true)
     @GetMapping
     public ResponseEntity<Page<InvoiceResponse>> findAllFilter(Pageable pageable, InvoiceFilter filter) {
-        var result = this.facade.findAllFilter(pageable, filter);
-        return !result.isEmpty() ? ResponseEntity.ok(result) : ResponseEntity.noContent().build();
+        var query = this.facade.findAllFilter(pageable, filter);
+        return !query.isEmpty() ? ResponseEntity.ok(query) : ResponseEntity.noContent().build();
     }
 
 }

@@ -1,14 +1,18 @@
 package br.com.fmatheus.app.model.service.impl;
 
 import br.com.fmatheus.app.controller.converter.helper.ProductHelper;
+import br.com.fmatheus.app.controller.dto.filter.ProductFilter;
 import br.com.fmatheus.app.controller.util.CharacterUtil;
 import br.com.fmatheus.app.model.entity.Product;
 import br.com.fmatheus.app.model.repository.ProductRepository;
 import br.com.fmatheus.app.model.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -24,8 +28,25 @@ public class ProductServiceImpl extends ProductHelper implements ProductService 
     }
 
     @Override
-    public List<Product> findAll() {
-        throw new UnsupportedOperationException();
+    public Page<Product> findAllFilter(Pageable pageable, ProductFilter filter) {
+        return this.repository.findAllFilter(pageable, filter);
+    }
+
+    @Override
+    public Long total(ProductFilter filter) {
+        return this.repository.total(filter);
+    }
+
+    @Override
+    public Collection<Product> findByIdManufacturer(Long idManufacturer) {
+        var query = this.repository.findByManufacturer_Id(idManufacturer);
+        return query.stream().map(this::output).toList();
+    }
+
+    @Override
+    public Collection<Product> findAll() {
+        var query = this.repository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        return query.stream().map(this::output).toList();
     }
 
     @Override

@@ -1,11 +1,11 @@
 package br.com.fmatheus.app.model.service;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
 
-public interface GenericService<T, ID>{
+public interface GenericService<T, ID> {
 
-    List<T> findAll();
+    Collection<T> findAll();
 
     Optional<T> findById(ID id);
 
