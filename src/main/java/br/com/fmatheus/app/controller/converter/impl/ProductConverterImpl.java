@@ -29,6 +29,6 @@ public class ProductConverterImpl implements ProductConverter {
     @Override
     public ProductResponse converterToResponse(Product product) {
         var manufacturer = new ProductResponse.ManufacturerResponse(product.getManufacturer().getId(), product.getManufacturer().getName());
-        return new ProductResponse(product.getName(), product.getEan(), manufacturer);
+        return new ProductResponse(product.getId(), product.getName(), product.getEan(), manufacturer);
     }
 }

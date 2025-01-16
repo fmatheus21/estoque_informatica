@@ -23,6 +23,7 @@ public class ProductResource {
 
     private final ProductFacade facade;
 
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ProductResponse create(@RequestBody @Valid ProductRequest request) {
@@ -50,6 +51,7 @@ public class ProductResource {
         var result = this.facade.findAllFilter(pageable, filter);
         return !result.isEmpty() ? ResponseEntity.ok(result) : ResponseEntity.noContent().build();
     }
+
 
     @GetMapping("/attributes")
     public Map<String, String> attributes() {

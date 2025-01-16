@@ -1,17 +1,14 @@
 package br.com.fmatheus.app.controller.facade;
 
 import br.com.fmatheus.app.controller.converter.ProductConverter;
-import br.com.fmatheus.app.controller.dto.filter.InvoiceFilter;
 import br.com.fmatheus.app.controller.dto.filter.ProductFilter;
 import br.com.fmatheus.app.controller.dto.request.ProductRequest;
-import br.com.fmatheus.app.controller.dto.response.InvoiceResponse;
 import br.com.fmatheus.app.controller.dto.response.ProductResponse;
 import br.com.fmatheus.app.model.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -47,8 +44,9 @@ public class ProductFacade {
     }
 
     public Page<ProductResponse> findAllFilter(Pageable pageable, ProductFilter filter) {
-        var list = this.productService.findAllFilter(pageable, filter);
-        var listConverter = list.stream().map(this.productConverter::converterToResponse).toList();
-        return new PageImpl<>(listConverter, pageable, this.productService.total(filter));
+        var products = productService.findAllFilter(pageable, filter);
+        var converted = products.stream().map(productConverter::converterToResponse).toList();
+        return new PageImpl<>(converted, pageable, productService.total(filter));
     }
+
 }

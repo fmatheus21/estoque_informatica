@@ -13,10 +13,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 import java.util.Properties;
 
 @Configuration
+@EnableSpringDataWebSupport(pageSerializationMode = EnableSpringDataWebSupport.PageSerializationMode.VIA_DTO)
 @ComponentScan(basePackageClasses = EstoqueInformaticaApplication.class)
 public class BeanConfig {
 
