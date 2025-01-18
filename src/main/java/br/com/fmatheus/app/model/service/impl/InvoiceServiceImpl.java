@@ -1,5 +1,6 @@
 package br.com.fmatheus.app.model.service.impl;
 
+import br.com.fmatheus.app.controller.converter.helper.InvoiceHelper;
 import br.com.fmatheus.app.controller.dto.filter.InvoiceFilter;
 import br.com.fmatheus.app.model.entity.Invoice;
 import br.com.fmatheus.app.model.repository.InvoiceRepository;
@@ -19,7 +20,7 @@ import static br.com.fmatheus.app.controller.util.CharacterUtil.removeSpecialCha
 
 @RequiredArgsConstructor
 @Service
-public class InvoiceServiceImpl implements InvoiceService {
+public class InvoiceServiceImpl extends InvoiceHelper implements InvoiceService {
 
     private final InvoiceRepository repository;
 
@@ -35,7 +36,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public Invoice save(Invoice invoice) {
-        return this.repository.save(invoice);
+        var input = input(invoice);
+        return output(this.repository.save(input));
     }
 
     @Override

@@ -1,41 +1,62 @@
 package br.com.fmatheus.app.controller.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
+
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.UUID;
 
-public record InvoiceResponse(
-        UUID id,
-        String number,
-        String accessKey,
-        String xmlFile,
-        SupplierResponse supplier,
-        Collection<InvoiceItemResponse> invoiceItems) {
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class InvoiceResponse {
 
-    public record SupplierResponse(
-            UUID id,
-            LocalDateTime dateUpdated,
-            UUID idUserUpdated,
-            PersonResponse person) {
+    private UUID id;
+    private String number;
+    private String accessKey;
+    private SupplierResponse supplier;
+    private Collection<InvoiceItemResponse> invoiceItems;
 
-        public record PersonResponse(
-                Long id,
-                String name,
-                String document,
-                PersonTypeResponse personType) {
+    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class SupplierResponse {
+        private UUID id;
 
-            public record PersonTypeResponse(
-                    String name) {
-            }
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+        private LocalDateTime dateUpdated;
+        private UUID idUserUpdated;
+        private PersonResponse person;
+
+        @Builder
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @AllArgsConstructor
+        public static class PersonResponse {
+            private String name;
+            private String document;
         }
-
     }
 
-    public record InvoiceItemResponse(
-            String serialNumber,
-            String observation,
-            UUID idUserCreated,
-            LocalDateTime dateCreated) {
+    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class InvoiceItemResponse {
+        private String serialNumber;
+        private String asset;
+        private String observation;
+        private UUID idUserCreated;
+
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+        private LocalDateTime dateCreated;
     }
 
 }

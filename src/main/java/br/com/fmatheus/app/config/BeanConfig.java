@@ -6,6 +6,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.modelmapper.convention.NameTokenizers;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +24,19 @@ import java.util.Properties;
 @EnableSpringDataWebSupport(pageSerializationMode = EnableSpringDataWebSupport.PageSerializationMode.VIA_DTO)
 @ComponentScan(basePackageClasses = EstoqueInformaticaApplication.class)
 public class BeanConfig {
+
+    @Bean
+    public ModelMapper mapper() {
+        var mapper = new ModelMapper();
+        mapper
+                .getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.STRICT)
+                .setUseOSGiClassLoaderBridging(true)
+                .setPreferNestedProperties(false)
+                .setSourceNameTokenizer(NameTokenizers.UNDERSCORE)
+                .setDestinationNameTokenizer(NameTokenizers.UNDERSCORE);
+        return mapper;
+    }
 
     /**
      * Desserializador de json enviado no formato string.

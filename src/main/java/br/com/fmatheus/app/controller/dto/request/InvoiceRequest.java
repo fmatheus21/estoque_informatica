@@ -3,20 +3,46 @@ package br.com.fmatheus.app.controller.dto.request;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 import java.util.Collection;
 
-public record InvoiceRequest(
-        @Valid @NotNull Collection<ProductRequest> products) {
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class InvoiceRequest {
 
-    public record ProductRequest(
-            @NotBlank Long idProduct,
-            @NotBlank String ean,
-            @Valid Collection<InvoiceItemRequest> items) {
+    @Valid
+    @NotNull
+    private Collection<ProductRequest> products;
 
-        public record InvoiceItemRequest(
-                @NotBlank String serialNumber,
-                String observation) {
+    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ProductRequest {
+
+        @NotBlank
+        private Long idProduct;
+
+        @NotBlank
+        private String ean;
+
+        @Valid
+        private Collection<InvoiceItemRequest> items;
+
+        @Builder
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @AllArgsConstructor
+        public static class InvoiceItemRequest {
+            @NotBlank
+            private String serialNumber;
+            private String observation;
         }
 
     }

@@ -4,14 +4,35 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 
-public record ProductRequest(
-        @NotBlank @Size(min = 1, max = 200) String name,
-        @NotBlank @Size(min = 8, max = 14) String ean,
-        @Valid @NotNull ManufacturerRequest manufacturer) {
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductRequest {
 
-    public record ManufacturerRequest(
-            @NotNull Long id,
-            @NotBlank String name) {
+    @NotBlank
+    @Size(min = 1, max = 200)
+    private String name;
+
+    @NotBlank
+    @Size(min = 8, max = 14)
+    private String ean;
+
+    @Valid
+    @NotNull
+    private ManufacturerRequest manufacturer;
+
+    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ManufacturerRequest {
+        private @NotNull Long id;
+        private @NotBlank String name;
     }
+
 }

@@ -1,13 +1,26 @@
 package br.com.fmatheus.app.controller.dto.response;
 
-public record ProductResponse(
-        Long id,
-        String name,
-        String ean,
-        ManufacturerResponse manufacturer)  {
+import lombok.*;
 
-    public record ManufacturerResponse(
-            Long id,
-            String name) {
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductResponse {
+
+    private Long id;
+    private String name;
+    private String ean;
+    private ManufacturerResponse manufacturer;
+
+    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ManufacturerResponse {
+        private Long id;
+        private String name;
     }
 }

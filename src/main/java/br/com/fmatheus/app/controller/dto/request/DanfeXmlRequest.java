@@ -1,4 +1,4 @@
-package br.com.fmatheus.app.controller.dto.response;
+package br.com.fmatheus.app.controller.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DanfeXmlResponse {
+public class DanfeXmlRequest {
 
     @JacksonXmlProperty(localName = "versao")
     private String versao;

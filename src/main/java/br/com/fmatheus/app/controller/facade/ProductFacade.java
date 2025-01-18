@@ -19,12 +19,12 @@ public class ProductFacade {
 
     private final ProductConverter productConverter;
     private final ProductService productService;
-    private final MessageFacade messageFacade;
+    private final ExceptionFacade exceptionFacade;
 
     public ProductResponse create(ProductRequest request) {
-        var query = this.productService.findByEan(request.ean());
+        var query = this.productService.findByEan(request.getEan());
         if (query.isPresent()) {
-            throw this.messageFacade.errorEanAlready(request.ean());
+            throw this.exceptionFacade.errorEanAlready(request.getEan());
         }
 
         var converter = this.productConverter.converterToEntity(request);
@@ -34,7 +34,7 @@ public class ProductFacade {
     }
 
     public ProductResponse findById(Long id) {
-        var query = this.productService.findById(id).orElseThrow(this.messageFacade::errorNotFoundException);
+        var query = this.productService.findById(id).orElseThrow(this.exceptionFacade::errorNotFoundException);
         return this.productConverter.converterToResponse(query);
     }
 

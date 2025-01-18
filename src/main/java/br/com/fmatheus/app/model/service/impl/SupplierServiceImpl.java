@@ -29,7 +29,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public Supplier save(Supplier supplier) {
-        return this.repository.save(supplier);
+        throw new UnsupportedOperationException();
     }
 
     @Override

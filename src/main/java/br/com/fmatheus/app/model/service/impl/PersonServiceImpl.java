@@ -1,5 +1,6 @@
 package br.com.fmatheus.app.model.service.impl;
 
+import br.com.fmatheus.app.controller.converter.helper.PersonHelper;
 import br.com.fmatheus.app.model.entity.Person;
 import br.com.fmatheus.app.model.repository.PersonRepository;
 import br.com.fmatheus.app.model.service.PersonService;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl extends PersonHelper implements PersonService {
 
     private final PersonRepository repository;
 
@@ -27,7 +28,8 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person save(Person person) {
-        return this.repository.save(person);
+        var input = input(person);
+        return output(this.repository.save(input));
     }
 
     @Override

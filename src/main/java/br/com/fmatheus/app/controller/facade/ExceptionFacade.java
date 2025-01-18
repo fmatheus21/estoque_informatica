@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class MessageFacade {
+public class ExceptionFacade {
 
     private static final String EXIST_RECORD = "message.error.exist-record";
     private static final String UNAUTHORIZED = "message.error.unauthorized";

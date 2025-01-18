@@ -23,12 +23,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     private static final String UNEXPECTED_ERROR = "Ocorreu um erro inesperado.";
-    private static final String ERROR = "error";
+    private static final String MESSAGE = "massage";
     private final MessageSource messageSource;
-    private String message;
-    private String cause;
 
-    // Tratamento de JSON inválido
     @Override
     protected @NonNull ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, @NonNull HttpHeaders headers, @NonNull HttpStatusCode status, @NonNull WebRequest request) {
         var httpStatus = HttpStatus.BAD_REQUEST;
@@ -86,7 +83,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ProblemDetail> handleGenericException(Exception ex) {
         var httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         var problemDetail = ProblemDetail.forStatusAndDetail(httpStatus, UNEXPECTED_ERROR);
-        problemDetail.setProperty(ERROR, ex.getMessage());
+        problemDetail.setProperty(MESSAGE, ex.getMessage());
         return ResponseEntity.status(httpStatus).body(problemDetail);
     }
 
@@ -101,7 +98,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ProblemDetail> handleBadRequestException(Exception ex) {
         var httpStatus = HttpStatus.BAD_REQUEST;
         var problemDetail = ProblemDetail.forStatusAndDetail(httpStatus, UNEXPECTED_ERROR);
-        problemDetail.setProperty(ERROR, this.returnMessage(ex));
+        problemDetail.setProperty(MESSAGE, this.returnMessage(ex));
         return ResponseEntity.status(httpStatus).body(problemDetail);
     }
 
@@ -109,7 +106,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ProblemDetail> handleConverterException(Exception ex) {
         var httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         var problemDetail = ProblemDetail.forStatusAndDetail(httpStatus, UNEXPECTED_ERROR);
-        problemDetail.setProperty(ERROR, this.returnMessage(ex));
+        problemDetail.setProperty(MESSAGE, this.returnMessage(ex));
         return ResponseEntity.status(httpStatus).body(problemDetail);
     }
 

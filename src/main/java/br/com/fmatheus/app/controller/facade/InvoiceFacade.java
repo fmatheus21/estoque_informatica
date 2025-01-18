@@ -2,9 +2,10 @@ package br.com.fmatheus.app.controller.facade;
 
 import br.com.fmatheus.app.config.properties.CustomProperties;
 import br.com.fmatheus.app.controller.converter.InvoiceConverter;
+import br.com.fmatheus.app.controller.converter.SupplierConverter;
 import br.com.fmatheus.app.controller.dto.filter.InvoiceFilter;
 import br.com.fmatheus.app.controller.dto.request.InvoiceRequest;
-import br.com.fmatheus.app.controller.dto.response.DanfeXmlResponse;
+import br.com.fmatheus.app.controller.dto.request.DanfeXmlRequest;
 import br.com.fmatheus.app.controller.dto.response.InvoiceResponse;
 import br.com.fmatheus.app.controller.util.ConverterUtil;
 import br.com.fmatheus.app.controller.util.FileUtil;
@@ -39,48 +40,49 @@ public class InvoiceFacade {
     private final ConverterUtil converterUtil;
     private final InvoiceService invoiceService;
     private final InvoiceConverter invoiceConverter;
+    private final SupplierConverter supplierConverter;
     private final SupplierService supplierService;
     private final PersonService personService;
     private final CustomProperties properties;
-    private final MessageFacade messageFacade;
+    private final ExceptionFacade exceptionFacade;
 
 
     public InvoiceResponse create(MultipartFile multipartFile, String json) {
 
-        var response = this.convertXmlToObject(multipartFile);
-        var file = this.saveFile(multipartFile, response);
+        var danfeXml = this.convertXmlToObject(multipartFile);
+        var file = this.saveFile(multipartFile, danfeXml);
 
         var request = this.convertJsonToObject(json);
-        this.validatesInvoiceData(request, response);
+        this.validatesInvoiceData(request, danfeXml);
 
         var xml = this.convertXmlToString(file);
-        var supplier = this.registerSupplier(response);
+        var supplier = this.registerSupplier(danfeXml);
 
         var invoice = Invoice.builder()
                 .supplier(supplier.getSupplier())
-                .number(response.getNFe().getInfNFe().getIde().getCNF())
-                .accessKey(response.getProtNFe().getInfProt().getChNFe())
+                .number(danfeXml.getNFe().getInfNFe().getIde().getCNF())
+                .accessKey(danfeXml.getProtNFe().getInfProt().getChNFe())
                 .xmlFile(xml)
                 .build();
 
         Collection<InvoiceItem> items = new ArrayList<>();
 
-        request.products().forEach(prod -> prod.items().forEach(it -> items.add(InvoiceItem.builder()
+        request.getProducts().forEach(prod -> prod.getItems().forEach(it -> items.add(InvoiceItem.builder()
                 .invoice(invoice)
-                .serialNumber(it.serialNumber())
-                .observation(it.observation())
+                .serialNumber(it.getSerialNumber())
+                .observation(it.getObservation())
                 .idUserCreated(UUID.randomUUID())
                 .dateCreated(LocalDateTime.now())
                 .product(Product.builder()
-                        .id(prod.idProduct())
+                        .id(prod.getIdProduct())
                         .build())
                 .build())));
 
         invoice.setInvoiceItems(items);
 
-        this.invoiceService.save(invoice);
+        var commit = this.invoiceService.save(invoice);
 
-        return null;
+        return this.invoiceConverter.converterToResponse(commit);
 
     }
 
@@ -97,17 +99,17 @@ public class InvoiceFacade {
             return this.converterUtil.convertJsonToObject(json, InvoiceRequest.class);
         } catch (JsonProcessingException e) {
             log.error(e.getMessage());
-            throw this.messageFacade.errorJsonConverter();
+            throw this.exceptionFacade.errorJsonConverter();
         }
     }
 
-    private DanfeXmlResponse convertXmlToObject(MultipartFile file) {
+    private DanfeXmlRequest convertXmlToObject(MultipartFile file) {
         try {
             log.info("Convertendo o arquivo XML para objeto");
-            return this.converterUtil.convertXmlToObject(file.getInputStream(), DanfeXmlResponse.class);
+            return this.converterUtil.convertXmlToObject(file.getInputStream(), DanfeXmlRequest.class);
         } catch (IOException e) {
             log.error(e.getMessage());
-            throw this.messageFacade.errorXmlConverter();
+            throw this.exceptionFacade.errorXmlConverter();
         }
     }
 
@@ -117,14 +119,14 @@ public class InvoiceFacade {
             return this.converterUtil.convertXmlToString(file);
         } catch (IOException e) {
             log.error(e.getMessage());
-            throw this.messageFacade.errorXmlConverter();
+            throw this.exceptionFacade.errorXmlConverter();
         }
     }
 
 
-    private Person registerSupplier(DanfeXmlResponse response) {
+    private Person registerSupplier(DanfeXmlRequest danfeXml) {
 
-        DanfeXmlResponse.NFe.InfNFe.Emit emit = response.getNFe().getInfNFe().getEmit();
+        DanfeXmlRequest.NFe.InfNFe.Emit emit = danfeXml.getNFe().getInfNFe().getEmit();
         var document = removeSpecialCharacters(emit.getCnpj());
         log.info("Consultando o supplier com o CNPJ {}.", document);
 
@@ -134,37 +136,16 @@ public class InvoiceFacade {
             return supplierQuery.get().getPerson();
         }
 
-        var name = removeDuplicateSpace(convertAllUppercaseCharacters(emit.getXNome()));
-        var telefone = emit.getEnderEmit().getFone();
-        log.info("O Fornecedor {} sera cadastrado.", name);
+        var converter = this.supplierConverter.converterToEntity(danfeXml);
 
-        var person = Person.builder()
-                .personType(PersonType.builder().id(2L).build())
-                .name(name)
-                .document(document)
-                .dateCreated(LocalDateTime.now())
-                .idUserCreated(UUID.randomUUID())
-                .build();
+        return this.personService.save(converter);
 
-        var supplier = Supplier.builder()
-                .person(person)
-                .build();
-
-        var contact = Contact.builder()
-                .person(person)
-                .phone(telefone != null ? removeSpecialCharacters(telefone) : null)
-                .build();
-
-        person.setSupplier(supplier);
-        person.setContact(contact);
-
-        return this.personService.save(person);
     }
 
 
-    /*private void registerProducts(DanfeXmlResponse response) {
+    /*private void registerProducts(DanfeXmlRequest response) {
         response.getNFe().getInfNFe().getDet().forEach(prod -> {
-            DanfeXmlResponse.NFe.InfNFe.Det.Prod prodXml = prod.getProd();
+            DanfeXmlRequest.NFe.InfNFe.Det.Prod prodXml = prod.getProd();
             String ean = prodXml.getCEan();
 
             var query = this.productService.findByEan(ean);
@@ -179,17 +160,17 @@ public class InvoiceFacade {
         });
     }*/
 
-    private void validatesInvoiceData(InvoiceRequest request, DanfeXmlResponse response) {
+    private void validatesInvoiceData(InvoiceRequest request, DanfeXmlRequest response) {
 
         var accessKeyQuery = this.invoiceService.findByAccessKey(response.getProtNFe().getInfProt().getChNFe());
         if (accessKeyQuery.isPresent()) {
-            throw this.messageFacade.errorAccessKeyAlready();
+            throw this.exceptionFacade.errorAccessKeyAlready();
         }
 
-        request.products().forEach(prod -> prod.items().forEach(it -> {
-            var serialNumberQuery = this.invoiceService.findBySerialNumber(it.serialNumber());
+        request.getProducts().forEach(prod -> prod.getItems().forEach(it -> {
+            var serialNumberQuery = this.invoiceService.findBySerialNumber(it.getSerialNumber());
             if (serialNumberQuery.isPresent()) {
-                throw this.messageFacade.errorSerialNumberAlready(it.serialNumber());
+                throw this.exceptionFacade.errorSerialNumberAlready(it.getSerialNumber());
             }
         }));
     }
@@ -200,7 +181,7 @@ public class InvoiceFacade {
      * @param file     Arquivo a ser salvo.
      * @param response Arquivo XML convertido em objeto.
      */
-    private File saveFile(MultipartFile file, DanfeXmlResponse response) {
+    private File saveFile(MultipartFile file, DanfeXmlRequest response) {
         var pathRoot = System.getProperty(this.properties.getUpload().getPathRoot());
         var pathFile = pathRoot.concat(File.separator).concat(this.properties.getUpload().getFiles().getDanfe().getPath());
 
@@ -208,7 +189,7 @@ public class InvoiceFacade {
             return FileUtil.saveFile(file, pathFile, response.getProtNFe().getInfProt().getChNFe());
         } catch (IOException e) {
             log.error(e.getMessage());
-            throw this.messageFacade.errorFileStorage();
+            throw this.exceptionFacade.errorFileStorage();
         }
     }
 
