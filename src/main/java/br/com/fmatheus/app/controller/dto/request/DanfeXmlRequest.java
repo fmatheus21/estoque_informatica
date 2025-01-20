@@ -9,6 +9,9 @@ import java.util.List;
 
 
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)

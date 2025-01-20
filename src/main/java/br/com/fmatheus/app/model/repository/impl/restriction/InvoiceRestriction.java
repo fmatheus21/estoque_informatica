@@ -45,6 +45,10 @@ public abstract class InvoiceRestriction {
             predicates.add(builder.like(builder.lower(joinPerson.get("document")), PERCENT + removeSpecialCharacters(filter.supplierDocument()) + PERCENT));
         }
 
+        if (Objects.nonNull(filter.searchXml())) {
+            predicates.add(builder.like(root.get("xmlFile"), PERCENT + removeDuplicateSpace(filter.searchXml()) + PERCENT));
+        }
+
         return predicates.toArray(new Predicate[0]);
 
     }

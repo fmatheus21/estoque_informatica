@@ -1,0 +1,1278 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="danfe" language="java" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="6e4d9e93-a32e-4b02-822e-9e0cb09c6629">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50.0" bold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18.0" bold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14.0" bold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle mode="Opaque" backcolor="#EEEFF0">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CACED0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle backcolor="#D8D8D8">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<dataset name="tableDataset" uuid="9347fd36-b31c-437b-81bc-ff4ed24f7d96">
+		<query language="sql"><![CDATA[]]></query>
+	</dataset>
+	<query language="sql"><![CDATA[]]></query>
+	<field name="emitterName" class="java.lang.String"/>
+	<field name="emitterAddress" class="java.lang.String"/>
+	<field name="emitterStreet" class="java.lang.String"/>
+	<field name="recipientName" class="java.lang.String"/>
+	<field name="recipientDocument" class="java.lang.String"/>
+	<field name="recipientAddress" class="java.lang.String"/>
+	<field name="recipientDistrict" class="java.lang.String"/>
+	<field name="recipientZipCode" class="java.lang.String"/>
+	<field name="recipientCity" class="java.lang.String"/>
+	<field name="recipientFu" class="java.lang.String"/>
+	<field name="invoiceNumber" class="java.lang.String"/>
+	<field name="accessKey" class="java.lang.String"/>
+	<field name="natureOperation" class="java.lang.String"/>
+	<field name="emitterStateRegistration" class="java.lang.String"/>
+	<field name="emitterDocument" class="java.lang.String"/>
+	<field name="serie" class="java.lang.String"/>
+	<title height="501" splitType="Stretch">
+		<element kind="frame" uuid="d2340774-4b27-4855-9ca6-2f7e449251cb" x="0" y="0" width="575" height="60">
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<element kind="rectangle" uuid="efd5d98b-ba21-49cb-9133-6f5cbedd22a8" mode="Transparent" x="115" y="30" width="345" height="25" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="rectangle" uuid="2ad081d5-ebd3-4aa8-9760-64596c3b355b" mode="Transparent" x="0" y="30" width="115" height="25" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="rectangle" uuid="687759c7-82f4-4d6c-824b-cfb509806fe9" mode="Transparent" x="460" y="0" width="115" height="55" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="00ca8aac-b6bb-49ec-a0bb-834da63d39f1" x="460" y="0" width="115" height="20" fontName="Serif" fontSize="14.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[NF-e]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="a35c18f8-cfe3-454a-a043-a0ee9bc29cec" x="460" y="20" width="115" height="20" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA["Nº. " + $F{invoiceNumber}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="21589ce9-15d0-48d5-a187-e12010efc7f9" x="460" y="40" width="115" height="15" fontName="Serif" fontSize="8.0" bold="true" hTextAlign="Center" vTextAlign="Top">
+				<expression><![CDATA["Série "+$F{serie}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="e0a0b1f0-039f-44e9-9c55-e48a1cea0e28" x="0" y="30" width="114" height="10" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[DATA DE RECEBIMENTO]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="3db2dfcd-7935-4be3-a758-520f4f4a9648" x="115" y="30" width="345" height="10" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b5b17746-dc52-47ee-8f6a-fdd3d8e66fbd" x="0" y="0" width="460" height="30" fontName="Serif" fontSize="6.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[RECEBEMOS DE B2W Companhia Digital OS PRODUTOS E/OU SERVIÇOS CONSTANTES DA NOTA FISCAL ELETRÔNICA INDICADA ABAIXO.
+EMISSÃO: 26/03/2021 VALOR TOTAL: R$ 2.507,97 DESTINATÁRIO: FERNANDO BRAGA MATHEUS - RUA PORTO CAMARGO, 392 - CASA 2, FUNDOS
+GUARATIBA RIO DE JANEIRO-RJ]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="03cd4e94-d0c9-4b17-86c0-cb1c8200ffc8" mode="Transparent" x="0" y="0" width="460" height="30" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="line" uuid="da8717bf-12db-4575-8a59-80b96930e805" x="0" y="60" width="575" height="1">
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5" lineStyle="Dashed"/>
+			</element>
+		</element>
+		<element kind="frame" uuid="fae9e9fc-c244-4f56-ad2e-e5e4236bc578" x="0" y="67" width="575" height="128">
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<element kind="rectangle" uuid="6922cabd-56cf-4e2f-9c2f-89a539c8af23" mode="Transparent" x="0" y="0" width="260" height="84" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="7d274e3b-e052-406a-b6a1-66d1b511b8de" x="0" y="0" width="260" height="10" fontName="Serif" fontSize="6.0" hTextAlign="Center">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[IDENTIFICAÇÃO DO EMITENTE]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="17efc431-f695-4784-a233-22068a1c8528" x="0" y="24" width="260" height="20" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{emitterName}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="a880b151-5820-43ed-b846-6c06cd6d9e7f" x="0" y="44" width="260" height="40" fontName="Serif" fontSize="7.0" hTextAlign="Center">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<expression><![CDATA[$F{emitterAddress}]]></expression>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="a9eb93d6-7025-478b-a732-271f84f4d981" mode="Transparent" x="260" y="0" width="100" height="84" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="1a9c7233-533d-4109-81b5-306d79349b11" x="260" y="0" width="100" height="16" fontName="Serif" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[DANFE]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="33c05ae8-31ee-4865-93ae-6168f0b4c5ce" x="260" y="16" width="100" height="18" fontName="Serif" fontSize="7.0" hTextAlign="Center" vTextAlign="Top">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<expression><![CDATA["Documento Auxiliar da Nota \n Fiscal Eletrônica"]]></expression>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="9167d41c-6fa9-4dae-9529-1c14d7ca35b5" x="260" y="34" width="70" height="10" fontName="Serif" fontSize="7.0" hTextAlign="Left">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[0 - ENTRADA]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="82e7ed19-ba7c-482f-b2f6-eac597a8d962" x="260" y="44" width="70" height="10" fontName="Serif" fontSize="7.0" hTextAlign="Left">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[1 - SAÍDA]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="71ca6676-4294-4f34-8b09-dfe9bda26d2e" x="334" y="34" width="18" height="20" fontName="Serif" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[1]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="5726e46e-3824-45fd-b106-309cffb78a1f" mode="Transparent" x="334" y="34" width="18" height="20" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="textField" uuid="62aaec7f-aacc-4156-843c-efcb0810bea4" x="260" y="54" width="100" height="12" fontName="Serif" fontSize="8.0" bold="true" hTextAlign="Center" vTextAlign="Bottom">
+				<expression><![CDATA["Nº. " + $F{invoiceNumber}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="0674c7e2-14db-4107-8fa5-8664c72631c1" x="260" y="66" width="100" height="10" fontName="Serif" fontSize="7.0" bold="true" hTextAlign="Center" vTextAlign="Top">
+				<expression><![CDATA["Série "+$F{serie}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="cd2535f8-4657-4642-9cfe-8d03561d7735" x="260" y="76" width="100" height="8" fontName="Serif" fontSize="6.0" bold="false" italic="true" hTextAlign="Center" vTextAlign="Top">
+				<text><![CDATA[Folha 1/1]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="ceea5e50-8886-4ba6-a3eb-a3a691142bf1" mode="Transparent" x="360" y="0" width="215" height="40" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="rectangle" uuid="30b00bf0-8d49-4e37-a0c3-40372c8eacec" mode="Transparent" x="360" y="40" width="215" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="df7bb219-f11a-4dd4-8264-0981475f793a" x="360" y="40" width="110" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[CHAVE DE ACESSO]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="12b47061-b50e-4a0e-ba08-d93cbc380441" x="360" y="48" width="215" height="14" fontName="Serif" fontSize="7.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<expression><![CDATA[$F{accessKey}]]></expression>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="b020890b-3fd2-4a3e-a720-b1cd17df5daf" mode="Transparent" x="360" y="62" width="215" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="textField" uuid="8032c26e-a7b6-40a1-81af-c81b4aacf62d" x="360" y="62" width="215" height="22" fontName="Serif" fontSize="7.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<expression><![CDATA["Consulta de autenticidade no portal nacional da NF-e \n www.nfe.fazenda.gov.br/portal ou no site da Sefaz Autorizadora"]]></expression>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="ced27bd0-a7f7-44f5-b813-1d787819fe2e" mode="Transparent" x="0" y="84" width="360" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="137ee0a9-3a54-4d0a-8a82-d85f0271b528" x="0" y="84" width="114" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[NATUREZA DA OPERAÇÃO]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="1f68bac4-7315-4ae2-a0ae-fdda2f68375d" x="0" y="92" width="360" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{natureOperation}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="2df6c115-e3b0-43f0-a169-d5a492100034" mode="Transparent" x="360" y="84" width="215" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="73c89ac5-2389-4074-9c0b-d7d52e43039f" x="360" y="84" width="140" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[PROTOCOLO DE AUTORIZAÇÃO DE USO]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="08a9428e-19b7-437a-ae11-a367eac4225f" x="360" y="92" width="215" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Top">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[333210048472850 - 26/03/2021 13:49:49]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="d995ce87-574a-47e3-82ef-77e369b91578" mode="Transparent" x="0" y="106" width="200" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="4d1ec94b-b581-4eb8-9df9-9c9582cb713e" x="0" y="106" width="114" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[INSCRIÇÃO ESTADUAL]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="0f7925cd-bd9c-42ee-a69a-4e3eba423633" x="0" y="114" width="200" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{emitterStateRegistration}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="b23608c0-afad-4c8a-890c-8cf5e0787aaf" mode="Transparent" x="200" y="106" width="215" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="32e6bbb3-f4a2-4127-9516-3a1a1bfe0cf0" x="200" y="106" width="152" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[INSCRIÇÃO ESTADUAL DO SUBST. TRIBUT]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="77235e7b-9c46-4018-acfd-553fd9e228c3" mode="Transparent" x="415" y="106" width="160" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="20a318be-fc7d-4576-a916-3af4e2158670" x="415" y="106" width="120" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[CNPJ]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="6ed160dc-7ddc-4b2c-9ba1-991897068be2" x="415" y="114" width="120" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Top">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{emitterDocument}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+		</element>
+		<element kind="frame" uuid="4167ca32-07bc-4173-b93f-55c6ea0a9695" x="0" y="195" width="575" height="80">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<element kind="staticText" uuid="fd292854-ba79-47ae-9e84-6c126fc66530" x="0" y="0" width="200" height="14" fontName="Serif" fontSize="8.0" bold="true" hTextAlign="Left" vTextAlign="Bottom">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[DESTINATÁRIO / REMETENTE]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="64bd957b-aa5e-4356-9c5d-2c416fc6a364" mode="Transparent" x="0" y="14" width="383" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="e9e4c3b5-196a-408a-9fae-edbee09f632e" x="0" y="14" width="200" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[NOME / RAZÃO SOCIAL]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="657a9f66-78f0-4d38-9c8b-6656742a8166" x="0" y="22" width="383" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{recipientName}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="d7a26d73-734e-4615-87cf-d41130e6ba63" mode="Transparent" x="383" y="14" width="107" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="2a5b069c-b8ea-4f1f-bad5-f8a8dc43607e" x="383" y="14" width="107" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[CNPJ / CPF]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="55c63aa9-ee3c-42a9-ad09-04b2d4a90074" x="383" y="22" width="107" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{recipientDocument}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="10ea7a9f-8341-4804-ab2b-6aa7d4b43219" mode="Transparent" x="490" y="14" width="85" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="77e13326-26b3-479f-b85d-df5bac7e1713" x="490" y="14" width="85" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[DATA DA EMISSÃO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="9c8ef1a8-b07d-4add-9027-6084f184ef53" x="490" y="22" width="85" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[26/03/2021]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="91ca50d9-703e-4889-8c14-67b0a37259af" mode="Transparent" x="0" y="36" width="280" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="85d7ade9-dce6-4db2-b7a3-cc196d630a06" x="0" y="36" width="280" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[ENDEREÇO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="ff0fbc65-f062-4d4e-bd13-03a371e6f5e9" x="0" y="44" width="280" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{recipientAddress}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="8e120fba-bcd0-4040-bae7-4d96645b1548" mode="Transparent" x="280" y="36" width="135" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="714494ea-bd89-4279-814b-a0f1498409c1" x="280" y="36" width="135" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[BAIRRO / DISTRITO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="7de6c7bf-01a9-4649-abee-4d3428968d98" x="280" y="44" width="135" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{recipientDistrict}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="7aea4ec5-03ae-4c0c-8255-1066bf5710f8" mode="Transparent" x="415" y="36" width="75" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="08f07d6e-a717-4c36-abd1-ab791f679d20" x="415" y="36" width="75" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[CEP]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="c618e023-c3f1-40b7-b509-ebd8a20f29d8" x="415" y="44" width="75" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{recipientZipCode}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="2c20896b-ba08-4718-86d7-6c92c1e81d2c" mode="Transparent" x="490" y="36" width="85" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="7854f71a-7dfe-48e7-97aa-16122c13763c" x="490" y="36" width="85" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[DATA DA SAÍDA/ENTRADA]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="48f46ee2-7075-4896-b369-0d34d4a682fb" x="490" y="44" width="85" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[26/03/2021]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="d5997e36-34d4-444e-908b-dd243ce0497c" mode="Transparent" x="0" y="58" width="280" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="e0cec550-068b-416f-a1bd-a247bca37c13" x="0" y="58" width="280" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[MUNICÍPIO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="7455efba-5914-4222-bdae-66c29983c782" x="0" y="66" width="280" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<expression><![CDATA[$F{recipientCity}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="2c9b5693-157d-449c-abca-5309237afb54" mode="Transparent" x="280" y="58" width="29" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="e0816aa5-fc04-4105-93bc-2ca42c6b35d7" x="280" y="58" width="29" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[UF]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="daa349fa-17f4-42b8-8b17-5f7ab0490715" x="280" y="66" width="29" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{recipientFu}]]></expression>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="7ddff410-5224-4b46-b16a-eb20c90cb77a" mode="Transparent" x="309" y="58" width="95" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="5e485ad0-d12b-4445-a850-882d265d4412" x="309" y="58" width="95" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[FONE / FAX]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="82d2f12a-891e-4449-bacd-5409fe0c3426" x="309" y="66" width="95" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[(21) 98153-8387]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="77ab10fc-d48b-4f1c-95bb-74aa929989dc" mode="Transparent" x="404" y="58" width="86" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="b68f8887-52a0-4737-877e-b4716f4c2e52" x="404" y="58" width="86" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[INSCRIÇÃO ESTADUAL]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="65ad7ccd-3892-4389-8810-dbcd55ae69d6" x="404" y="66" width="86" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="fdc4b42b-6cf1-43df-abc7-fe41e91c2013" mode="Transparent" x="490" y="58" width="85" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="6b6188e3-07f3-417f-a9d4-4aac51be9ec1" x="490" y="58" width="85" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[HORA DA SAÍDA/ENTRADA]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="585bf7b1-9718-48fa-9742-1ebbfc359ad0" x="490" y="66" width="85" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[13:49:00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+		</element>
+		<element kind="frame" uuid="891b5387-d289-4bd1-947c-18868b3f1e47" x="0" y="275" width="575" height="59">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<element kind="staticText" uuid="a46ed84c-c4c0-469d-a329-d77ffc618a97" x="0" y="0" width="200" height="15" fontName="Serif" fontSize="8.0" bold="true" hTextAlign="Left" vTextAlign="Bottom">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[CÁLCULO DO IMPOSTO]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="45042320-3b5a-4c3d-9c7c-4dad3d57a7f2" mode="Transparent" x="0" y="15" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="4072e977-846f-40ed-bd3c-9be48ded423e" x="0" y="15" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[BASE CÁLC. DO ICMS
+]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="cf55908a-d9db-4204-84dc-199811cc17d4" x="0" y="23" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[1.672,06]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="dda6ce63-b0a3-44ac-8f56-43fe4c3299d8" mode="Transparent" x="65" y="15" width="60" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="5a193b73-9516-404c-8fd7-dea2070f3674" x="65" y="15" width="60" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VALOR DO ICMS]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="f0981db3-52e5-4dca-a8ae-fb3715df13d4" x="65" y="23" width="60" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[300,97]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="eeb24cba-0c49-43dc-9f4b-4ad4676994b3" mode="Transparent" x="125" y="15" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="d44d5750-ccaa-4f5e-8b20-cc6c4f45fb95" x="125" y="15" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[B. CÁLC. ICMS S.T]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="67b33995-0305-4075-b564-21598d96ba51" x="125" y="23" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="bab04304-fb99-47ad-9b70-5587cb803c20" mode="Transparent" x="190" y="15" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="d96a8dc7-14bc-4674-9dd9-ebaebc2622ee" x="190" y="15" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VALOR ICMS SUBST.]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="00e604ba-d68c-41f9-ac04-6a35ea78d5ed" x="190" y="23" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="5b863469-51a9-4407-b933-457c4d78d013" mode="Transparent" x="255" y="15" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="95356d15-3870-4032-8853-ed03bec5ed4e" x="255" y="15" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[V. IMP. IMPORTAÇÃO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="ebb3c4b3-82d9-4444-bc8e-b771fee92254" x="255" y="23" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="e6ca1002-7dd1-4024-8c1e-bcb2f092d59d" mode="Transparent" x="320" y="15" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="dcdc5b4b-9cd6-47e7-8aed-999476dd6a5a" x="320" y="15" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[V. ICMS UF REMET.]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="2e962884-fb16-4c99-9f4c-09d54995664b" x="320" y="23" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="6b912b77-9854-4d0c-9c55-d6f17384c0f6" mode="Transparent" x="385" y="15" width="60" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="84db54ea-c6a5-4b38-a0d3-dd76168a7cd6" x="385" y="15" width="60" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VALOR DO FCP]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c4137334-213c-4933-b53a-6f1e688a9c49" x="385" y="23" width="60" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="38cd54a4-7a9c-41b1-89e1-e00de308e508" mode="Transparent" x="445" y="15" width="60" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="e85e4855-befc-4268-988d-c0b5b092fb51" x="445" y="15" width="60" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VALOR DO PIS]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="2ddae6d2-84b1-4b4b-a736-91cba222efe7" x="445" y="23" width="60" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[41,38]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="be216210-cb13-4ceb-9952-13f223a6ad48" mode="Transparent" x="505" y="15" width="70" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="12aa7683-3268-4845-96e2-50ca65cc40ce" x="505" y="15" width="70" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[V. TOTAL PRODUTOS]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="4b6917c1-cce3-403f-8295-493168a55114" x="505" y="23" width="70" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[2.499,98]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="0d4dd738-e977-4769-9ec6-233e9c3e16a5" mode="Transparent" x="0" y="37" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="f39b242f-c114-4ac6-8c9d-b2199f05e4ab" x="0" y="37" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VALOR DO FRETE]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="5cc4b7db-7bdc-4479-807c-bb870cda496b" x="0" y="45" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[7,99]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="9d63a3ca-978f-4590-8ada-35889fb32fd2" mode="Transparent" x="65" y="37" width="60" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="c2ee18d9-ce45-429c-b06d-ebd60a0a328f" x="65" y="37" width="60" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VALOR DO SEGURO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="3f5da423-c62b-4268-838c-f2c8c72702cd" x="65" y="45" width="60" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="558f3715-abe7-4bc5-9045-f6fc98928109" mode="Transparent" x="125" y="37" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="96aafcbc-8ce7-4261-8acc-9ee1c9bb00d8" x="125" y="37" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[DESCONTO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="8f50c047-e036-4a35-bb5a-13e93447bdaf" x="125" y="45" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="1e1a5076-2dee-4b4f-aecb-20505c963066" mode="Transparent" x="190" y="37" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="781709c0-0fa2-4592-abc7-e6141df51a28" x="190" y="37" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[OUTRAS DESPESAS]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="f0afe789-87a6-4488-bb36-9c53150f796d" x="190" y="45" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="a938727d-7748-4f59-83cf-0a0c63bda689" mode="Transparent" x="255" y="37" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="180a68df-5841-4502-ba99-cf4893a75ebb" x="255" y="37" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VALOR TOTAL IPI]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c5e76262-8df6-49ce-9bc4-bd3a1099a12c" x="255" y="45" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="f5269662-dac5-4902-bc6d-9db0f508be4e" mode="Transparent" x="320" y="37" width="65" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="c9359153-ecb5-4fcf-a758-d8ca226e8954" x="320" y="37" width="65" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[V. ICMS UF DEST.]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d562c88b-d18c-4558-90e9-c01e128691fc" x="320" y="45" width="65" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[0,00]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="f4f1e2a3-7c23-42d0-8ae1-96033f4b7113" mode="Transparent" x="385" y="37" width="60" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="1b82cada-a035-4e32-8b2b-ad6a43cd96a8" x="385" y="37" width="60" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[V. TOT. TRIB.]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="2dd0a420-ea38-437e-9496-d8559a5afe93" x="385" y="45" width="60" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[678,66]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="2e0728b9-2031-4039-88cc-4a5b8d7daab3" mode="Transparent" x="445" y="37" width="60" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="1865d0a3-554c-45cb-a13f-534ad3c8e155" x="445" y="37" width="60" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VALOR DA COFINS]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d6aeff08-878c-4b57-bdfd-405e93a888c3" x="445" y="45" width="60" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[190,61]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="c95d9292-ec31-4ac4-ba61-90fe25436eb4" mode="Transparent" x="505" y="37" width="70" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="fcd03cc2-9c2e-49a0-9a32-de2ed50e207f" x="505" y="37" width="70" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[V. TOTAL DA NOTA]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c967b380-4487-4d76-b6c3-8932156082dd" x="505" y="45" width="70" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[2.507,97]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+		</element>
+		<element kind="frame" uuid="3a90cc27-1423-4e86-ba66-65b033f1ad5d" x="0" y="334" width="575" height="81">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<element kind="staticText" uuid="52a70e4e-1b62-4b63-8d33-ed9cd5e9d94f" x="0" y="0" width="230" height="15" fontName="Serif" fontSize="8.0" bold="true" hTextAlign="Left" vTextAlign="Bottom">
+				<paragraph leftIndent="5" rightIndent="5"/>
+				<text><![CDATA[TRANSPORTADOR / VOLUMES TRANSPORTADOS]]></text>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="124251e4-9a33-4f03-bb63-932671a34183" mode="Transparent" x="0" y="15" width="169" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="dbf03f1a-2209-4d05-a54f-328858e7da6d" x="0" y="15" width="169" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[NOME / RAZÃO SOCIAL]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c632e81d-c777-4c00-b775-9c4368b4ac00" x="0" y="23" width="169" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[CLICK_ZNO]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="449faaf7-8ee4-496d-b471-72571ebc5a85" mode="Transparent" x="169" y="15" width="86" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="142d79a3-61c8-4dce-b0e0-4985b95da231" x="169" y="15" width="86" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[FRETE POR CONTA]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="87cee566-3756-4144-9c1b-7c764a1f6b33" x="169" y="23" width="86" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[(0) Emitente]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="f866e6fb-6746-47d0-94ae-3d13f1ac46b1" mode="Transparent" x="255" y="15" width="86" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="7bf2d4db-b063-4664-bcf2-abdd52d24202" x="255" y="15" width="86" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[CÓDIGO ANTT]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="480d01a3-c706-45e2-a84d-d72c4dc86840" x="255" y="23" width="86" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="8f68a529-5983-400a-95f9-18d8ba20e75d" mode="Transparent" x="341" y="15" width="79" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="a46f396c-0ac9-4021-967d-8c54e701d572" x="341" y="15" width="79" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[PLACA DO VEÍCULO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="8362dc93-b107-444a-baa5-91bfcfb63812" x="341" y="23" width="79" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="963cdb37-8746-497c-9ff7-2398880d478e" mode="Transparent" x="420" y="15" width="25" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="e5262ae1-f935-406e-b51a-1e295b940112" x="420" y="15" width="25" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[UF]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="79c8ebe6-436e-46ff-97ff-3e49f619190e" x="420" y="23" width="25" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="6cb36c7b-fae7-4094-9d89-c60ed95bc2aa" mode="Transparent" x="445" y="15" width="130" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="e280d508-4964-441f-b271-4808ab161140" x="445" y="15" width="130" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[CNPJ / CPF]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="38dd7573-cf9e-496c-927a-e44c9dd683b5" x="445" y="23" width="130" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[15.121.491/0014-10]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="fa5ad987-35a4-4647-8f46-caf6d05859e8" mode="Transparent" x="0" y="37" width="255" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="08de7441-26ee-4040-a940-426fbfdf1a2b" x="0" y="37" width="255" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[ENDEREÇO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="065d51a1-1e30-42cd-903d-cbc02924f5a3" x="0" y="45" width="255" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="f51ad7aa-4fea-4022-ad4d-3f9746b572fc" mode="Transparent" x="255" y="37" width="165" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="9c03fea6-688b-4cc3-abdb-c6db61c069ea" x="255" y="37" width="165" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[MUNICÍPIO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="75d5b10a-4963-4dcd-b0e1-59a81e894e56" x="255" y="45" width="165" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[RIBEIRÃO PRETO]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="13a687bc-21cc-455f-8cb5-97e78905daba" mode="Transparent" x="420" y="37" width="25" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="8ac0f8a4-3c8f-4f03-8fe4-1a1d8720b49b" x="420" y="37" width="25" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[UF]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c0f382ba-5a7d-4efd-ae99-94ca45df2faf" x="420" y="45" width="25" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[SP]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="85df3256-296b-4fa0-b2ed-62c30b7c0e8d" mode="Transparent" x="445" y="37" width="130" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="dde6ee88-2ab4-4d55-b4a7-84772f259a55" x="445" y="37" width="130" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[INSCRIÇÃO ESTADUAL]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a7863eab-57e7-43bc-8ded-fcc29ab3cda3" x="445" y="45" width="130" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="e4450f33-bc9f-4bc5-b897-3ccf2a08f945" mode="Transparent" x="0" y="59" width="60" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="09fd14a8-eb46-4f22-8ff7-7ca58fb99992" x="0" y="59" width="60" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[QUANTIDADE]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a18d8a22-4c30-4811-8932-2efca5c5ef9d" x="0" y="67" width="60" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[2]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="f4532adc-b919-4bbf-a8a3-e2e54018434c" mode="Transparent" x="60" y="59" width="109" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="a0b31aef-5611-4690-aae9-1cbaf9b2a2ca" x="60" y="59" width="109" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[ESPÉCIE]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c46b642b-f1fd-42e8-9e4d-5fed84deedb6" x="60" y="67" width="109" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[VOLS]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="c44443d4-e386-47cf-a92a-710e8bfcde92" mode="Transparent" x="169" y="59" width="86" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="0c6d5fbd-f40d-485c-ba8f-40f3f7f744ac" x="169" y="59" width="86" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[MARCA]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="9766be50-f909-41e9-9a2c-17132930084a" x="169" y="67" width="86" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="1471a893-5a78-4750-a39b-04d6c3c9b2c6" mode="Transparent" x="255" y="59" width="86" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="117c666a-3c61-4d1b-8c2b-fdef6f9dde64" x="255" y="59" width="86" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[NUMERAÇÃO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c8e51975-6212-4385-af2a-c13a81906692" x="255" y="67" width="86" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="bc651108-9795-40ba-ae17-7b315bcef537" mode="Transparent" x="341" y="59" width="104" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="9f71d2b0-2b8d-4497-a2cb-41b3869cc29f" x="341" y="59" width="104" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[PESO BRUTO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="49cfabf3-2acb-48d5-a249-20c5bbc95829" x="341" y="67" width="104" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[12,400]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="e0845753-0f88-470f-960a-b0ed7abd366f" mode="Transparent" x="445" y="59" width="130" height="22" radius="3">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.5"/>
+			</element>
+			<element kind="staticText" uuid="f6333937-73cf-4c54-8d35-54798ab7e19f" x="445" y="59" width="130" height="8" fontName="Serif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[PESO LÍQUIDO]]></text>
+				<property name="com.jaspersoft.studio.unit.tabStopWidth" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.spacingBefore" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="16e0af53-02f1-43b0-b737-eb2162ce2c4d" x="445" y="67" width="130" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+				<paragraph leftIndent="2" rightIndent="2"/>
+				<text><![CDATA[12,400]]></text>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+		</element>
+	</title>
+	<columnHeader height="20"/>
+	<detail>
+		<band height="20"/>
+	</detail>
+	<lastPageFooter height="177"/>
+</jasperReport>

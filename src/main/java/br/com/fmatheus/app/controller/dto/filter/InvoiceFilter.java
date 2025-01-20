@@ -4,5 +4,6 @@ public record InvoiceFilter(
         String supplierName,
         String supplierDocument,
         String invoiceNumber,
-        String accessKey) {
+        String accessKey,
+        String searchXml) {
 }

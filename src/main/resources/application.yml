@@ -42,3 +42,7 @@ custom:
       danfe:
         path: /files/danfe
         extension: .xml
+      jasper:
+        invoice:
+          path: /files/jasper/danfe
+          file-name: danfe

@@ -3,6 +3,7 @@ package br.com.fmatheus.app.controller.resource;
 import br.com.fmatheus.app.controller.dto.filter.InvoiceFilter;
 import br.com.fmatheus.app.controller.dto.response.InvoiceResponse;
 import br.com.fmatheus.app.controller.facade.InvoiceFacade;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -34,6 +35,12 @@ public class InvoiceResource {
     public ResponseEntity<Page<InvoiceResponse>> findAllFilter(Pageable pageable, InvoiceFilter filter) {
         var query = this.facade.findAllFilter(pageable, filter);
         return !query.isEmpty() ? ResponseEntity.ok(query) : ResponseEntity.noContent().build();
+    }
+
+    @Transactional(readOnly = true)
+    @GetMapping("/accessKey/{accessKey}")
+    public void viewInvoice(@PathVariable String accessKey, HttpServletResponse response) {
+        this.facade.viewInvoice(accessKey, response);
     }
 
 }

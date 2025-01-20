@@ -23,12 +23,26 @@ public class CustomProperties {
         @Setter
         public static class Files {
             private Danfe danfe;
+            private Jasper jasper;
 
             @Getter
             @Setter
             public static class Danfe {
                 private String path;
                 private String extension;
+            }
+
+            @Getter
+            @Setter
+            public static class Jasper {
+                private Invoice invoice;
+
+                @Getter
+                @Setter
+                public static class Invoice {
+                    private String path;
+                    private String fileName;
+                }
             }
         }
     }

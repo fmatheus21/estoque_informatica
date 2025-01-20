@@ -2,6 +2,7 @@ package br.com.fmatheus.app.controller.exception.handler;
 
 
 import br.com.fmatheus.app.controller.exception.BadRequestException;
+import br.com.fmatheus.app.controller.exception.JasperException;
 import br.com.fmatheus.app.controller.exception.JsonConverterException;
 import br.com.fmatheus.app.controller.exception.XmlConverterException;
 import lombok.RequiredArgsConstructor;
@@ -102,7 +103,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(httpStatus).body(problemDetail);
     }
 
-    @ExceptionHandler({XmlConverterException.class, JsonConverterException.class})
+    @ExceptionHandler({XmlConverterException.class, JsonConverterException.class, JasperException.class})
     public ResponseEntity<ProblemDetail> handleConverterException(Exception ex) {
         var httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         var problemDetail = ProblemDetail.forStatusAndDetail(httpStatus, UNEXPECTED_ERROR);
