@@ -13,6 +13,7 @@ import br.com.fmatheus.app.controller.exception.JasperException;
 import br.com.fmatheus.app.controller.report.service.DanfeReportService;
 import br.com.fmatheus.app.controller.util.CharacterUtil;
 import br.com.fmatheus.app.controller.util.ConverterUtil;
+import br.com.fmatheus.app.controller.util.DateFormatterUtil;
 import br.com.fmatheus.app.controller.util.FileUtil;
 import br.com.fmatheus.app.model.entity.*;
 import br.com.fmatheus.app.model.service.InvoiceService;
@@ -128,6 +129,7 @@ public class InvoiceFacade {
         var ide = danfeXml.getNFe().getInfNFe().getIde();
         var emitter = danfeXml.getNFe().getInfNFe().getEmit();
         var recipient = danfeXml.getNFe().getInfNFe().getDest();
+        var protocol = danfeXml.getProtNFe();
 
         var danfe = DanfeReportResponse.builder()
                 .invoiceNumber(ide.getCNF())
@@ -158,6 +160,7 @@ public class InvoiceFacade {
                 .recipientZipCode(CharacterUtil.formatMask(recipient.getEnderDest().getCep(), "#####-###"))
                 .recipientCity(CharacterUtil.convertFirstUppercaseCharacter(recipient.getEnderDest().getXMun()))
                 .recipientFu(CharacterUtil.convertAllUppercaseCharacters(recipient.getEnderDest().getUf()))
+                .authorizationProtocol(protocol.getInfProt().getNProt() + " - " + DateFormatterUtil.converterDate(protocol.getInfProt().getDhRecbto()))
                 .build();
 
         try {

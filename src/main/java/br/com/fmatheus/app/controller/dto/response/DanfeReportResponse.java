@@ -25,5 +25,6 @@ public class DanfeReportResponse {
     private String recipientZipCode;
     private String recipientCity;
     private String recipientFu;
+    private String authorizationProtocol;
 
 }

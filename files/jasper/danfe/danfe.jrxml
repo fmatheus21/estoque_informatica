@@ -78,6 +78,7 @@
 	<field name="emitterStateRegistration" class="java.lang.String"/>
 	<field name="emitterDocument" class="java.lang.String"/>
 	<field name="serie" class="java.lang.String"/>
+	<field name="authorizationProtocol" class="java.lang.String"/>
 	<title height="501" splitType="Stretch">
 		<element kind="frame" uuid="d2340774-4b27-4855-9ca6-2f7e449251cb" x="0" y="0" width="575" height="60">
 			<property name="com.jaspersoft.studio.unit.y" value="px"/>
@@ -291,9 +292,9 @@ GUARATIBA RIO DE JANEIRO-RJ]]></text>
 				<text><![CDATA[PROTOCOLO DE AUTORIZAÇÃO DE USO]]></text>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="staticText" uuid="08a9428e-19b7-437a-ae11-a367eac4225f" x="360" y="92" width="215" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Top">
+			<element kind="textField" uuid="9348b7e4-528d-4a1b-8e78-134a96722401" x="360" y="92" width="215" height="14" fontName="Serif" fontSize="10.0" bold="true" hTextAlign="Center" vTextAlign="Top">
 				<paragraph leftIndent="2" rightIndent="2"/>
-				<text><![CDATA[333210048472850 - 26/03/2021 13:49:49]]></text>
+				<expression><![CDATA[$F{authorizationProtocol}]]></expression>
 				<property name="local_mesure_unitheight" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
